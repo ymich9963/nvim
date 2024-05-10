@@ -26,8 +26,12 @@ Using `lazy.vim` to create a modular structure in `/lua`,
 - `remaps.lua` for key remappings
 - `sets.lua` for general settings 
 
-## Setup
-For `markdown-preview` execute, `cd $HOME\AppData\Local\nvim-data\lazy\markdown-preview.nvim\app\` and `npm install`
+## Config Setup
+- Execute in terminal (Windows Powershell): `git clone https://github.com/ymich9963/nvim-config $HOME\AppData\Local\nvim` 
+
+## Plugin Setup
+- Run `:Lazy sync` to make sure everything is working
+- For `markdown-preview` execute, `cd $HOME\AppData\Local\nvim-data\lazy\markdown-preview.nvim\app\` and `npm install`
 
 
 
