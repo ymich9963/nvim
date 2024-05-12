@@ -18,6 +18,6 @@ return {
         require("ibl").setup({
             scope = {enabled = false}
         })
-    end
-
+    end,
+    -- lazy = true,
 }

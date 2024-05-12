@@ -8,7 +8,6 @@ Using,
 - [vim-fugitive](https://github.com/tpope/vim-fugitive.git): Git inside NeoVim 
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim.git): Indentation 
 - [VonHeikemen/lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim.git): LSP Configuration
-- [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim.git): Statusline
 - [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim.git): Markdown Preview 
 - [tomtom/tcomment_vim](https://github.com/tomtom/tcomment_vim.git): Commenting
 - [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim.git): Fuzzy file finding 
