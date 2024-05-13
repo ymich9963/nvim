@@ -1,4 +1,7 @@
-# Plugins
+# NeoVim Config
+My nvim config that I use on my Windows machine.
+
+## Plugins
 Using,
     
 - [lazy.nvim](https://github.com/folke/lazy.nvim.git): Plugin Manager
@@ -30,6 +33,7 @@ Using `lazy.vim` to create a modular structure in `/lua`,
 
 ## Config Setup
 - Execute in terminal (Windows Powershell): `git clone https://github.com/ymich9963/nvim-config $HOME\AppData\Local\nvim` 
+- Powershell 7 (`pwsh.exe`) is used for the terminal of choice. Remove the line in `sets.lua` for systems with no `pwsh.exe`.
 
 ## Plugin Setup
 - Run `:Lazy sync` to make sure everything is working
@@ -37,7 +41,6 @@ Using `lazy.vim` to create a modular structure in `/lua`,
 
 ## Comments
 - Setting up the LSP required combining the example given in the Mason docs by executing `:h mason-lspconfig-automatic-server-setup` and the [setup](https://github.com/hrsh7th/nvim-cmp?tab=readme-ov-file#setup) provided by `nvim-cmp`.
-
 
 
 
