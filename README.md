@@ -7,7 +7,10 @@ Using,
 - [bufferline.nvim](https://github.com/akinsho/bufferline.nvim.git): Tabs
 - [vim-fugitive](https://github.com/tpope/vim-fugitive.git): Git inside NeoVim 
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim.git): Indentation 
-- [VonHeikemen/lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim.git): LSP Configuration
+- [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim): LSP Manager
+- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): Bridge for Mason and NeoVim LSP
+- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): NeoVim LSP
+- [https://github.com/hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion Engine
 - [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim.git): Markdown Preview 
 - [tomtom/tcomment_vim](https://github.com/tomtom/tcomment_vim.git): Commenting
 - [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim.git): Fuzzy file finding 
@@ -32,7 +35,8 @@ Using `lazy.vim` to create a modular structure in `/lua`,
 - Run `:Lazy sync` to make sure everything is working
 - For `markdown-preview` execute, `cd $HOME\AppData\Local\nvim-data\lazy\markdown-preview.nvim\app\` and `npm install`
 
-
+## Comments
+- Setting up the LSP required combining the example given in the Mason docs by executing `:h mason-lspconfig-automatic-server-setup` and the [setup](https://github.com/hrsh7th/nvim-cmp?tab=readme-ov-file#setup) provided by `nvim-cmp`.
 
 
 
