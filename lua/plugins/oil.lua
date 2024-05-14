@@ -9,10 +9,12 @@ return {
             -- Id is automatically added at the beginning, and name at the end
             -- See :help oil-columns
             columns = {
-                "icon",
+                {"icon", add_padding = false},
                 -- "permissions",
-                -- "size",
-                -- "mtime",
+                {"size", highlight= "Keyword"},
+                {"mtime", highlight= "Statement", format= "%D %T"},
+                -- {"ctime", format="%D %T"},
+                {"type", highlight= "Special"},
             },
             -- Buffer-local options to use for oil buffers
             buf_options = {
@@ -89,7 +91,7 @@ return {
                 end,
                 -- Sort file names in a more intuitive order for humans. Is less performant,
                 -- so you may want to set to false if you work with large directories.
-                natural_order = true,
+                natural_order = false,
                 sort = {
                     -- sort order can be "asc" or "desc"
                     -- see :help oil-columns to see which columns are sortable
