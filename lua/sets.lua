@@ -22,4 +22,5 @@ vim.opt.scrolloff = 10
 vim.opt.updatetime = 50
 -- vim.opt.colorcolumn = "80"
 vim.opt.shell = '"C:\\Program Files\\PowerShell\\7\\pwsh.exe"'
+vim.opt.autochdir = true
 

@@ -7,7 +7,6 @@ Using,
 - [lazy.nvim](https://github.com/folke/lazy.nvim.git): Plugin Manager
 - [alpha-nvim](https://github.com/goolord/alpha-nvim.git): NeoVim Homepage
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs.git): Makes using brackets easier
-- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim.git): Tabs
 - [vim-fugitive](https://github.com/tpope/vim-fugitive.git): Git inside NeoVim 
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim.git): Indentation 
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim): LSP Manager
