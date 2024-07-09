@@ -44,13 +44,20 @@ return {
 
         require("mason").setup()
         require("mason-lspconfig").setup()
-
         require("mason-lspconfig").setup_handlers {
             function (server_name) -- default handler (optional)
                 require("lspconfig")[server_name].setup {
                     capabilities = capabilities
                 }
             end,
+            -- used to start an LSP (clangd in this case) with specific settings
+            -- clangd = function()
+            --     local lspconfig = require('lspconfig')
+            --     lspconfig.clangd.setup({
+            --         name = "clangd",
+            --         cmd = {"C:\\Users\\yiannis\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--log=verbose", "--query-driver=C:\\msys64\\usr\\bin\\clang.exe"}
+            --     })
+            -- end,
         }
 
 
