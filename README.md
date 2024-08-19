@@ -15,7 +15,7 @@ Using,
 - [https://github.com/hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion Engine
 - [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim.git): Markdown Preview 
 - [tomtom/tcomment_vim](https://github.com/tomtom/tcomment_vim.git): Commenting
-- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim.git): Fuzzy file finding 
+- [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua): Fuzzy file finding with grep, also installed some optional dependencies 
 - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim.git): Fancy TODO: comments 
 - [folke/tokyonight.nvim](https://github.com/folke/tokyonight.nvim.git): Colourscheme (customised)
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git): Syntax Highlighting
