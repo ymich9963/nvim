@@ -12,7 +12,7 @@ Using,
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim): LSP Manager
 - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): Bridge for Mason and NeoVim LSP
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): NeoVim LSP
-- [https://github.com/hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion Engine
+- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion Engine
 - [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim.git): Markdown Preview 
 - [tomtom/tcomment_vim](https://github.com/tomtom/tcomment_vim.git): Commenting
 - [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua): Fuzzy file finding with grep, also installed some optional dependencies 
