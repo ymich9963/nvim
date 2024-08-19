@@ -31,10 +31,16 @@ Using `lazy.vim` to create a modular structure in `/lua`,
 - `sets.lua` for general settings 
 
 ## Config Setup
+### Windows
+- Install NeoVim.
 - Execute in terminal (Windows Powershell): `git clone https://github.com/ymich9963/nvim-config $HOME\AppData\Local\nvim` 
 - Powershell 7 (`pwsh.exe`) is used for the terminal of choice. Remove the line in `sets.lua` for systems with no `pwsh.exe`.
 
-## Plugin Setup
+### Linux
+- Install NeoVim using the AppImage to get the latest version.
+- Execute in terminal: `git clone https://github.com/ymich9963/nvim-config ~/.config/nvim`. 
+
+# Plugin Setup
 - Run `:Lazy sync` to make sure everything is working
 - For `markdown-preview` execute, `cd $HOME\AppData\Local\nvim-data\lazy\markdown-preview.nvim\app\` and `npm install`
 
