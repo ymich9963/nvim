@@ -5,14 +5,25 @@ return {
     config = function()
         require("tokyonight").setup({
             dim_inactive = false, -- dims inactive windows
+            terminal_colors = true,
             on_colors = function(colors)
-                colors.bg = "#000000"
-                colors.green = "#e2eb56"
-                colors.green1 = "#4fd633"
-                colors.green2 = "#4f5533"
-                colors.blue0 = "#14a3e8"
-                colors.blue = "#2426df"
-                colors.magenta = "#9d33ff"
+                -- to change these look at tokyonight_storm.lua
+                -- can even take a screenshot and rg/grep the colour
+                colors.bg = "#000000" -- background colour
+                colors.green = "#e2eb56" -- string colour
+                colors.green1 = "#4fd633" -- variables
+                colors.blue = "#2426df" -- function members
+                colors.blue0 = "#14a3e8" -- functions
+                colors.magenta = "#9d33ff" -- keywords
+                colors.fg_gutter = "#535561" -- line numbers
+                colors.bg_highlight = "#30333e" -- highlight line colour
+                colors.bg_statusline = "#000000" -- status line background
+                colors.bg_popup = "#000000" -- popup when inputting commands
+                colors.bg_sidebar = "#1f2335" -- popup with whichkey
+                colors.bg_visual = "#2e3c64" -- visual highlights
+                -- setting these to to be different removes the padded ^^^^^^^
+                colors.fg_dark = "#535561" -- command text
+                colors.fg_sidebar = "#FFFFFF" -- statusline text
             end
         })
         require("tokyonight")
