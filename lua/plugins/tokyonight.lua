@@ -12,7 +12,7 @@ return {
                 colors.bg = "#000000" -- background colour
                 colors.green = "#e2eb56" -- string colour
                 colors.green1 = "#4fd633" -- variables
-                colors.blue = "#2426df" -- function members
+                colors.blue = "#2d5dd6" -- function members
                 colors.blue0 = "#14a3e8" -- functions
                 colors.magenta = "#9d33ff" -- keywords
                 colors.fg_gutter = "#535561" -- line numbers
@@ -26,8 +26,6 @@ return {
                 colors.fg_sidebar = "#FFFFFF" -- statusline text
             end
         })
-        require("tokyonight")
         vim.cmd([[colorscheme tokyonight]])
     end,
-    opts = {},
 }

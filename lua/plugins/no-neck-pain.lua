@@ -1,6 +1,7 @@
 return {
     "shortcuts/no-neck-pain.nvim",
     version = "*",
+    keys = {"<Leader>np", "<Leader>nql", "<Leader>nqr"},
     config = function ()
         require("no-neck-pain").setup({
             -- The width of the focused window that will be centered. When the terminal width is less than the `width` option, the side buffers won't be created.
@@ -12,7 +13,7 @@ return {
             --- @type integer
             minSideBufferWidth = 10,
             -- Creates mappings for you to easily interact with the exposed commands.
-            --- @type table
+            --- @type table"<Leader>nql"
             autocmds = {
                 -- When `true`, enables the plugin when you start Neovim.
                 -- If the main window is  a side tree (e.g. NvimTree) or a dashboard, the command is delayed until it finds a valid window.

@@ -1,5 +1,6 @@
 return {
     "ibhagwan/fzf-lua",
+    keys = {"<leader>ff", "<leader>rr"},
     dependencies = {
         "nvim-tree/nvim-web-devicons",
         -- I'm not sure how to make this work but another method is
@@ -8,7 +9,6 @@ return {
     },
     config = function()
         -- calling `setup` is optional for customization
-        require("fzf-lua").setup({})
         vim.keymap.set("n", "<leader>ff", require('fzf-lua').files, { desc = "Fzf files" })
         vim.keymap.set("n", "<leader>rr", require('fzf-lua').resume , { desc = "Fzf resume" })
         vim.keymap.set({"n", "v", "i"}, "<C-x><C-f>",

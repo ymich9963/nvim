@@ -20,4 +20,5 @@ return {
         })
     end,
     -- lazy = true,
+    event = "BufReadPost",
 }
