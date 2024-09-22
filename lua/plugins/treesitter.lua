@@ -15,7 +15,7 @@ return {
                 additional_vim_regex_highlighting = { 'markdown', "markdown_inline" },
            },
         }
-        vim.cmd([[:TSUpdate]])
+        -- vim.cmd([[:TSUpdate]])
     end,
     -- lazy = true,
 }

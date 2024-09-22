@@ -9,10 +9,10 @@ return {
             -- Id is automatically added at the beginning, and name at the end
             -- See :help oil-columns
             columns = {
-                {"icon", add_padding = false},
+                {"icon", add_padding = true},
                 -- "permissions",
-                {"size", highlight= "Keyword"},
-                {"mtime", highlight= "Statement", format= "%D %T"},
+                {"size", highlight= "Constant"},
+                {"mtime", highlight= "@lsp.type.property", format= "%D %T"},
                 -- {"ctime", format="%D %T"},
                 {"type", highlight= "Special"},
             },
@@ -97,6 +97,7 @@ return {
                     -- see :help oil-columns to see which columns are sortable
                     { "type", "asc" },
                     { "name", "asc" },
+                    { "size", "asc" },
                 },
             },
             -- EXPERIMENTAL support for performing file operations with git

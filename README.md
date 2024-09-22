@@ -7,7 +7,6 @@ Using,
 - [lazy.nvim](https://github.com/folke/lazy.nvim.git): Plugin Manager
 - [alpha-nvim](https://github.com/goolord/alpha-nvim.git): NeoVim Homepage
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs.git): Makes using brackets easier
-- [vim-fugitive](https://github.com/tpope/vim-fugitive.git): Git inside NeoVim 
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim.git): Indentation 
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim): LSP Manager
 - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): Bridge for Mason and NeoVim LSP
@@ -19,10 +18,11 @@ Using,
 - [tomtom/tcomment_vim](https://github.com/tomtom/tcomment_vim.git): Commenting
 - [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua): Fuzzy file finding with grep, also installed some optional dependencies 
 - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim.git): Fancy TODO: comments 
-- [folke/tokyonight.nvim](https://github.com/folke/tokyonight.nvim.git): Colourscheme (customised)
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git): Syntax Highlighting
 - [mbbill/undotree](https://github.com/mbbill/undotree.git): Improved Undo
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim.git): Key Hints
+
+Colourscheme is my own in `colors/`.
 
 ## Structure
 Using `lazy.vim` to create a modular structure in `/lua`,
