@@ -13,7 +13,7 @@ set termguicolors
 hi! Normal guifg=#eeeeee guibg=#000000  " Background
 hi! Function guifg=#2d52d6 
 hi! Type guifg=#65bcff
-hi! Identifier guifg=#9d33ff
+" hi! Identifier guifg=#9d33ff
 hi! Special guifg=#65bcff
 hi! Statement guifg=#9d33ff
 hi! Constant guifg=#ff966c
@@ -80,3 +80,19 @@ hi! IblIndent guifg=#535561
 
 " Oil
 " change in plugin config, look at docs
+
+" C/Cpp
+hi! @keyword.type.cpp guifg=lightblue
+
+" Python
+hi! @variable.python guifg=#c8d3f5 
+hi! @variable.member.python guifg=#4fd633
+hi! @variable.parameter.python guifg=#ffc777
+hi! @variable.builtin.python gui=italic guifg=#fca7ea
+
+" Makrdown
+hi!  markdownH1 guifg=#65bcff
+hi!  markdownH2 guifg=#4fd633
+hi!  markdownH3 guifg=#ffc777
+hi!  markdownH4 guifg=#fca7ea
+
