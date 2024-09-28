@@ -10,7 +10,6 @@ Using,
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim.git): Indentation 
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim): LSP Manager
 - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): Bridge for Mason and NeoVim LSP
-- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): Bridge for Mason and NeoVim LSP
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): NeoVim LSP
 - [shortcuts/no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim): Auto-centre when using one buffer
 - [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion Engine

@@ -23,7 +23,7 @@ hi! PreProc guifg=#86e1fc
 hi! String guifg=#e2eb56
 hi! EndOfBuffer guifg=#000000 " Dashes at end of file
 hi! WarningMsg guifg=#ffc777
-hi! Title ctermfg=NONE gui=bold guifg=#000000
+hi! Title ctermfg=NONE gui=bold guifg=#222222
 hi! Visual ctermbg=NONE guibg=#353d39
 hi! CursorLine guifg=NONE guibg=#353d39
 hi! MatchParen guibg=#000000 guifg=#ff966c
@@ -49,7 +49,7 @@ hi! SignColumn guifg=#535561 guibg=#000000
 
 " Popup menu
 hi! Pmenu guifg=#8c8c8c guibg=#111111 " Popup menu font and Background
-hi! PmenuSel ctermfg=242 ctermbg=0 guibg=#3b3b3b " Popup menu selection highlight
+hi! PmenuSel ctermfg=242 ctermbg=0 guibg=#bbbbbb " Popup menu selection highlight
 hi! PmenuSbar ctermbg=248 guibg=Grey " Popup menu scroll background
 hi! PmenuThumb ctermbg=15 guibg=#c2c2c2 " Popup menu scroll thing
 
@@ -83,6 +83,7 @@ hi! IblIndent guifg=#535561
 
 " C/Cpp
 hi! @keyword.type.cpp guifg=lightblue
+" hi! @@comment.documentation.cpp guifg=#65bcff
 
 " Python
 hi! @variable.python guifg=#c8d3f5 
@@ -91,8 +92,10 @@ hi! @variable.parameter.python guifg=#ffc777
 hi! @variable.builtin.python gui=italic guifg=#fca7ea
 
 " Makrdown
-hi!  markdownH1 guifg=#65bcff
-hi!  markdownH2 guifg=#4fd633
-hi!  markdownH3 guifg=#ffc777
-hi!  markdownH4 guifg=#fca7ea
+hi!  @markup.heading.1.markdown guifg=#65bcff
+hi!  @markup.heading.2.markdown guifg=#4fd633
+hi!  @markup.heading.3.markdown guifg=#ffc777
+hi!  @markup.heading.4.markdown guifg=#fca7ea
+" could use markdownH1/2/3/4 before, not sure what happened.
+
 
