@@ -12,7 +12,7 @@ return {
                 {"icon", add_padding = true},
                 -- "permissions",
                 {"size", highlight= "Constant"},
-                {"mtime", highlight= "@lsp.type.property", format= "%D %T"},
+                {"mtime", highlight= "@lsp.type.property", format= "%d/%m/%y %T"},
                 -- {"ctime", format="%D %T"},
                 {"type", highlight= "Special"},
             },
