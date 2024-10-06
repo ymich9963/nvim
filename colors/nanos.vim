@@ -24,8 +24,8 @@ hi! String guifg=#e2eb56
 hi! EndOfBuffer guifg=#000000 " Dashes at end of file
 hi! WarningMsg guifg=#ffc777
 hi! Title ctermfg=NONE gui=bold guifg=#222222
-hi! Visual ctermbg=NONE guibg=#353d39
-hi! CursorLine guifg=NONE guibg=#353d39
+hi! Visual ctermbg=NONE guibg=#00190d
+hi! CursorLine guifg=NONE guibg=#00190d
 hi! MatchParen guibg=#000000 guifg=#ff966c
 
 " Cursor stuff that doesn't work
