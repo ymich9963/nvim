@@ -44,6 +44,8 @@ return {
             -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
             cleanup_delay_ms = 2000,
             lsp_file_methods = {
+                -- Enable or disable LSP file operations
+                enabled = true,
                 -- Time to wait for LSP file operations to complete before skipping
                 timeout_ms = 1000,
                 -- Set to true to autosave buffers that are updated with LSP willRenameFiles
@@ -52,8 +54,15 @@ return {
             },
             -- Constrain the cursor to the editable parts of the oil buffer
             -- Set to `false` to disable, or "name" to keep it on the file names
-            constrain_cursor = "editable",
+            constrain_cursor = "name",
             -- Set to true to watch the filesystem for changes and reload oil
+            watch_for_changes = true,
+            -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
+            -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
+            -- Additionally, if it is a string that matches "actions.<name>",
+            -- it will use the mapping at require("oil.actions").<name>
+            -- Set to `false` to remove a keymap
+            -- See :help oil-actions for a list of all available actions
             keymaps = {
                 ["g?"] = "actions.show_help",
                 ["<CR>"] = "actions.select",
@@ -173,6 +182,6 @@ return {
                 border = "rounded",
             },
         })
-    vim.keymap.set("n","<leader>o",":Oil<CR>")
+        vim.keymap.set("n","<leader>o",":Oil<CR>")
     end,
 }
