@@ -79,7 +79,9 @@ hi! @variable.vim guifg=#c8d3f5
 hi! IblIndent guifg=#535561
 
 " Oil
-" change in plugin config, look at docs
+" for column colours change in plugin config, look at docs
+hi! OilDirHidden guifg=#09908f 
+hi! OilFileHidden guifg=#09908f 
 
 " C/Cpp
 hi! @keyword.type.cpp guifg=lightblue

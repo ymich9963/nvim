@@ -22,13 +22,14 @@ return {
                 }
             end,
             -- used to start an LSP (clangd in this case) with specific settings
-            -- clangd = function()
-            --     local lspconfig = require('lspconfig')
-            --     lspconfig.clangd.setup({
-            --         name = "clangd",
-            --         cmd = {"C:\\Users\\yiannis\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--log=verbose"}
-            --     })
-            -- end,
+            clangd = function()
+                local lspconfig = require('lspconfig')
+                lspconfig.clangd.setup({
+                    name = "clangd",
+                    -- cmd = {"C:\\Users\\yiannis\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--log=verbose"}
+                    cmd = {"C:\\Users\\yiannis\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
+                })
+            end,
         }
 
         -- LSP diagnostics config
