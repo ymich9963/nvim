@@ -15,7 +15,7 @@ Using,
 - [shortcuts/no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim): Auto-centre when using one buffer
 - [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion Engine
 - [danymat/neogen](https://github.com/danymat/neogen): Auto-generate doxygen data. 
-- [tomtom/tcomment_vim](https://github.com/tomtom/tcomment_vim.git): Commenting
+- [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim): Commenting
 - [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua): Fuzzy file finding with grep, also installed some optional dependencies 
 - [MeanderingProgrammer/render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim): Live rendering of markdown files. 
 - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim.git): Fancy TODO: comments 
