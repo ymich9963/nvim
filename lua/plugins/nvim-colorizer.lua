@@ -5,5 +5,4 @@ return {
         require("colorizer").setup()
     end,
     cmd= {"ColorizerToggle"}
-
 }

@@ -22,8 +22,9 @@ Using,
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git): Syntax Highlighting
 - [mbbill/undotree](https://github.com/mbbill/undotree.git): Improved Undo
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim.git): Key Hints
+- [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo.git): Folding
 
-Colourscheme is my own in `colors/`.
+Colourscheme is my own in `colors/` and some fonts I like are in `fonts/`.
 
 ## Structure
 Using `lazy.vim` to create a modular structure in `/lua`,

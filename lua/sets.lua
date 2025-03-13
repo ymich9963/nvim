@@ -25,13 +25,13 @@ vim.opt.termguicolors = true
 vim.opt.shell = '"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -NoLogo'
 vim.opt.autochdir = true
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldcolumn = '0'
-vim.opt.fillchars = 'fold: ,foldopen:,foldsep: ,foldclose:'
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldcolumn = '0'
+-- vim.opt.fillchars = 'fold: ,foldopen:,foldsep: ,foldclose:'
+-- vim.opt.foldlevelstart = 99
+-- vim.opt.foldenable = true
 -- vim.o.foldlevel = 99
-vim.opt.foldlevelstart = 99
-vim.opt.foldenable = true
 
 function _G.MyFoldText()
     return vim.fn.getline(vim.v.foldstart) .. ' ... ' .. vim.fn.getline(vim.v.foldend):gsub("^%s*", "")

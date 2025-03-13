@@ -29,7 +29,7 @@ hi! CursorLine guifg=NONE guibg=#151515
 hi! MatchParen guibg=#000000 guifg=#ff966c
 
 " Folding
-hi! Folded guibg=#000000 guifg=#2F2F2F
+hi! Folded guibg=#000000 gui=bold,italic
 
 " Status line
 hi! StatusLine cterm=NONE gui=bold,italic guifg=#eeeeee guibg=#000001
