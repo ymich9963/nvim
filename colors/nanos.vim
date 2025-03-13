@@ -28,15 +28,8 @@ hi! Visual ctermbg=NONE guibg=#2A2A2A
 hi! CursorLine guifg=NONE guibg=#151515
 hi! MatchParen guibg=#000000 guifg=#ff966c
 
-" Cursor stuff that doesn't work
-" hi! Cursor cterm=NONE gui=NONE guibg=Red guifg=Red
-" hi! Cursor2 cterm=NONE gui=NONE guibg=Red guifg=Red
-" hi! lCursor cterm=NONE gui=NONE guibg=Red guifg=Red
-" hi! TermCursor cterm=NONE gui=NONE guibg=Red guifg=Red
-" set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor50
-" augroup tune_colors | au!
-"     au ColorScheme * hi Cursor guibg=red guifg=Red
-" augroup END
+" Folding
+hi! Folded guibg=#000000 guifg=#2F2F2F
 
 " Status line
 hi! StatusLine cterm=NONE gui=bold,italic guifg=#eeeeee guibg=#000001
@@ -99,5 +92,4 @@ hi!  @markup.heading.2.markdown guifg=#4fd633
 hi!  @markup.heading.3.markdown guifg=#ffc777
 hi!  @markup.heading.4.markdown guifg=#fca7ea
 " could use markdownH1/2/3/4 before, not sure what happened.
-
 

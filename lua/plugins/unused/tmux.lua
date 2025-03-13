@@ -1,3 +1,0 @@
-return {
-    "aserowy/tmux.nvim",
-}
