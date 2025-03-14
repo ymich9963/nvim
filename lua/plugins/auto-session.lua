@@ -3,17 +3,17 @@ return {
     lazy = false,
     opts = {
         suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-        log_level = 'debug',
-        enabled = true,
         lazy_support = true,
-        root_dir = vim.fn.stdpath("data") .. "/sessions/", -- Root dir where sessions will be stored
-        session_control = {
-            control_dir = vim.fn.stdpath("data") .. "/auto_session/", -- Auto session control dir, for control files, like alternating between two sessions with session-lens
-            control_filename = "session_control.json", -- File name of the session control file
-        },
         bypass_save_filetypes = { 'alpha', 'dashboard' },
+        auto_save = true, -- Enables/disables auto saving session on exit
+        auto_restore = true, -- Enables/disables auto restoring session on start
+        auto_create = false, -- Enables/disables auto creating new session files. Can take a function that should return true/false if a new session file should be created or not
+        auto_restore_last_session = false, -- On startup, loads the last saved session if session for cwd does not exist
     },
-    config = function ()
-        vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-    end,
+    keys = {
+        { "<leader>sl", ":SessionSearch", desc = "List sessions", },
+        { "<leader>ss", ":SessionSave", desc = "Save session", },
+        { "<leader>sd", ":SessionDelete", desc = "Delete session", },
+        { "<leader>sr", ":SessionRestore", desc = "Restore session", },
+    },
 }

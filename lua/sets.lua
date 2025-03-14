@@ -22,6 +22,7 @@ vim.opt.scrolloff = 10
 vim.opt.updatetime = 50
 vim.opt.termguicolors = true
 vim.opt.autochdir = true
+vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 -- vim.opt.colorcolumn = "80"
 
 -- Setttings to use Powershell 
@@ -33,5 +34,6 @@ vim.opt.shellxquote = ''
 vim.opt.shellquote = ''
 -- vim.opt.shellcmdflag = '-ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues["Out-File:Encoding"]="utf8";Remove-Alias -Force -ErrorAction SilentlyContinue tee;'
 -- vim.g.compiler_gcc_ignore_unmatched_lines = true
+
 
 vim.cmd('colorscheme nanos')
