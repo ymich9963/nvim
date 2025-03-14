@@ -1,7 +1,8 @@
 return {
     "neovim/nvim-lspconfig",
-    lazy = false,
-    priority = 900,
+    -- lazy = false,
+    -- priority = 900,
+    event = 'VimEnter',
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",

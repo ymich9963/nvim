@@ -21,22 +21,23 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 10
 vim.opt.updatetime = 50
 vim.opt.termguicolors = true
--- vim.opt.colorcolumn = "80"
 vim.opt.shell = '"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -NoLogo'
 vim.opt.autochdir = true
+-- vim.opt.colorcolumn = "80"
 
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
--- vim.opt.foldcolumn = '0'
--- vim.opt.fillchars = 'fold: ,foldopen:,foldsep: ,foldclose:'
--- vim.opt.foldlevelstart = 99
--- vim.opt.foldenable = true
--- vim.o.foldlevel = 99
+vim.cmd('colorscheme nanos')
+
+-- Folding without UFO
+--[[ vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldcolumn = '0'
+vim.opt.fillchars = 'fold: ,foldopen:,foldsep: ,foldclose:'
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+vim.o.foldlevel = 99
 
 function _G.MyFoldText()
     return vim.fn.getline(vim.v.foldstart) .. ' ... ' .. vim.fn.getline(vim.v.foldend):gsub("^%s*", "")
 end
-vim.opt.foldtext = 'v:lua.MyFoldText()'
 
-vim.cmd('colorscheme nanos')
-
+vim.opt.foldtext = 'v:lua.MyFoldText()' ]]
