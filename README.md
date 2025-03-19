@@ -23,22 +23,22 @@ Using,
 - [mbbill/undotree](https://github.com/mbbill/undotree.git): Improved Undo
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim.git): Key Hints
 - [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo.git): Folding
+- [rmagatti/auto-session](https://github.com/rmagatti/auto-session.git): Session manager 
 
 Colourscheme is my own in `colors/` and some fonts I like are in `fonts/`.
 
 ## Structure
 Using `lazy.vim` to create a modular structure in `/lua`,
 
-- `plugins/` contains all the plugin `.lua` files and the `/unused` directory for unused plugins
-- `manager.lua` to setup `lazy.vim`
-- `remaps.lua` for key remappings
-- `sets.lua` for general settings 
+- `plugins/` contains all the plugin `.lua` files and the `/unused` directory for unused plugins.
+- `manager.lua` to setup `lazy.vim`.
+- `remaps.lua` for key remappings.
+- `sets.lua` for general settings.
 
 ## Config Setup
 ### Windows
 - Install NeoVim.
 - Execute in terminal (Windows Powershell): `git clone https://github.com/ymich9963/nvim-config $HOME\AppData\Local\nvim` 
-- Powershell 7 (`pwsh.exe`) is used for the terminal of choice. Remove the line in `sets.lua` for systems with no `pwsh.exe`.
 
 ### Linux
 - Install NeoVim using the AppImage to get the latest version.
@@ -49,8 +49,4 @@ Using `lazy.vim` to create a modular structure in `/lua`,
 
 ## Comments
 - Setting up the LSP required combining the example given in the Mason docs by executing `:h mason-lspconfig-automatic-server-setup` and the [setup](https://github.com/hrsh7th/nvim-cmp?tab=readme-ov-file#setup) provided by `nvim-cmp`.
-
-
-
-
 
