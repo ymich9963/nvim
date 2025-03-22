@@ -22,7 +22,7 @@ vim.opt.scrolloff = 10
 vim.opt.updatetime = 50
 vim.opt.termguicolors = true
 vim.opt.autochdir = true
-vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.opt.sessionoptions="blank,buffers,curdir,help,tabpages,winsize,winpos,terminal,localoptions"
 -- vim.opt.colorcolumn = "80"
 
 -- Setttings to use Powershell, taken from toggleterm.nvim
