@@ -50,5 +50,15 @@ return {
                 vim.diagnostic.open_float(nil, {focus=false})
             end
         })
+
+        -- Keymaps for LSP from ThePrimeagen/init.lua
+        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, {desc = "Go to definition"})
+        vim.keymap.set("n", "K", function() vim.lsp.buf.hover(nil, {focus=false}) end, {desc = "Display info in float window"})
+        -- vim.keymap.set("n", "<leader>lfo", function() vim.diagnostic.open_float(nil, {focus=false}) end, {desc = "Open diagnostics in float window"})
+        vim.keymap.set("n", "<leader>lfr", function() vim.lsp.buf.references() end, {desc = "Find references of word under cursor"})
+        vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, {desc = "Rename word under cursor"})
+        vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, {desc = "Go to next diagnostic"})
+        vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, {desc = "Go to previous diagnostic"})
+
     end
 }
