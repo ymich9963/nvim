@@ -24,7 +24,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- I hate <C-w>q
-vim.keymap.set("n", "<C-w>q", "<nop>", {desc = "Default use is to close a window, disabled it"})
+-- vim.keymap.set({"n", "v"}, "<C-w>q", "<nop>", {desc = "Default use is to close a window, disabled it"})
 
 -- Quickfix list stuff
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
