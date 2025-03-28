@@ -12,17 +12,13 @@ return {
         vim.keymap.set("n", "<leader>ff", require('fzf-lua').files, { desc = "Fzf files" })
         vim.keymap.set("n", "<leader>rr", require('fzf-lua').resume , { desc = "Fzf resume" })
         vim.keymap.set({"n", "v", "i"}, "<C-x><C-f>",
-            function()
-                require("fzf-lua").complete_file({
+        function()
+            require("fzf-lua").complete_file({
                 cmd = "rg --files",
                 winopts = { preview = { hidden = "nohidden" } }
             })
-            end,
+        end,
         { silent = true, desc = "Fuzzy complete file" })
-        vim.keymap.set({"n", "v", "i"}, "<C-x><C-g>",
-            function()
-                require("fzf-lua").complete_path()
-            end,
-        { silent = true, desc = "Fuzzy complete path" })
+        vim.keymap.set({"n", "v", "i"}, "<C-x><C-g>", function() require("fzf-lua").complete_path() end, { silent = true, desc = "Fuzzy complete path" })
     end
 };

@@ -8,14 +8,15 @@ return {
         vim.o.foldlevel = 99
         vim.o.foldlevelstart = 99
 
-        vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-        vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-        vim.keymap.set('n', 'K', function()
+        vim.keymap.set('n', 'zR', require('ufo').openAllFolds, {desc = 'Open all folds'})
+        vim.keymap.set('n', 'zM', require('ufo').closeAllFolds, {desc = 'Close all folds'})
+        vim.keymap.set('n', 'P',
+        function()
             local winid = require('ufo').peekFoldedLinesUnderCursor()
             if not winid then
                 vim.lsp.buf.hover()
             end
-        end)
+        end, {desc = "Peek folded lines under cursor"})
 
         -- LSP Folding
         local capabilities = vim.lsp.protocol.make_client_capabilities()

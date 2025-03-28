@@ -1,7 +1,6 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    -- opts = {},
     config = function()
         -- local highlight = {
         --     "CursorColumn",
@@ -19,6 +18,5 @@ return {
             scope = {enabled = false}
         })
     end,
-    -- lazy = true,
     event = "BufReadPost",
 }

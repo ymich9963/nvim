@@ -27,6 +27,7 @@ vim.opt.sessionoptions="blank,buffers,curdir,help,tabpages,winsize,winpos,termin
 
 -- Setttings to use Powershell, taken from toggleterm.nvim
 vim.opt.shell = vim.fn.executable('pwsh') == 1 and 'pwsh -NoLogo' or 'powershell -NoLogo'
+-- Hopefully they fix the path issue with this one day
 -- vim.opt.shell = '"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -NoLogo'
 vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
 vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'

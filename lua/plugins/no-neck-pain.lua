@@ -1,7 +1,11 @@
 return {
     "shortcuts/no-neck-pain.nvim",
     version = "*",
-    keys = {"<Leader>np", "<Leader>nql", "<Leader>nqr"},
+    keys = {
+        {"<Leader>np", "NoNeckPain", "n", desc = "No neck pain!"},
+        {"<Leader>nql", "NoNeckPainToggleLeftSide", "n", desc = "No neck pain toggle left side"},
+        {"<Leader>nqr", "NoNeckPainToggleRightSide", "n", desc = "No neck pain toggle right side"},
+    },
     config = function ()
         require("no-neck-pain").setup({
             -- The width of the focused window that will be centered. When the terminal width is less than the `width` option, the side buffers won't be created.

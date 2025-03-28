@@ -2,7 +2,7 @@ return {
     'goolord/alpha-nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function ()
-        vim.keymap.set("n", "<leader>H", ":Alpha<CR>")
+        vim.keymap.set("n", "<leader>H", ":Alpha<CR>", {desc = "Go to Alpha home page"})
 
         local startify = require("alpha.themes.startify")
         -- local theta = require("alpha.themes.theta")
@@ -20,7 +20,7 @@ return {
             --     [[   \ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
             --     [[    \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
             -- },
-            val = {[[]]},
+            val = {[[Home]]},
             opts = {
                 hl = "Type",
                 shrink_margin = false,
