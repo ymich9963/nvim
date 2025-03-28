@@ -2,6 +2,7 @@
 <a href="https://dotfyle.com/ymich9963/nvim-config"><img src="https://dotfyle.com/ymich9963/nvim-config/badges/plugins?style=plastic" /></a>
 <a href="https://dotfyle.com/ymich9963/nvim-config"><img src="https://dotfyle.com/ymich9963/nvim-config/badges/leaderkey?style=plastic" /></a>
 <a href="https://dotfyle.com/ymich9963/nvim-config"><img src="https://dotfyle.com/ymich9963/nvim-config/badges/plugin-manager?style=plastic" /></a>
+
 My nvim config that I use on my Windows machine.
 
 ## Plugins
