@@ -43,21 +43,21 @@ return {
         })
 
         -- Floating windows for better diagnostics
-        vim.o.updatetime = 250 -- for cursor hold
+        --[[ vim.o.updatetime = 250 -- for cursor hold
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
             callback = function ()
                 vim.diagnostic.open_float(nil, {focus=false})
             end
-        })
+        }) ]]
 
     end,
-    -- Keymaps for LSP from ThePrimeagen/init.lua
     keys = {
         {"gd", function() vim.lsp.buf.definition() end, "n", desc = "Go to definition"},
         {"K", function() vim.lsp.buf.hover(nil, {focus=false}) end, "n", desc = "Display info in float window"},
-        {"<leader>lfr", function() vim.lsp.buf.references() end, "n", desc = "Find references of word under cursor"},
-        {"<leader>lr", function() vim.lsp.buf.rename() end, "n", desc = "Rename word under cursor"},
+        {"<leader>lfo", function() vim.diagnostic.open_float(nil, {focus=false}) end, desc = "Open diagnostics in float window"},
+        {"<leader>grr", function() vim.lsp.buf.references() end, "n", desc = "Find references of word under cursor"},
+        {"<leader>grn", function() vim.lsp.buf.rename() end, "n", desc = "Rename word under cursor"},
         {"[d", function() vim.diagnostic.goto_next() end, "n", desc = "Go to next diagnostic"},
         {"]d", function() vim.diagnostic.goto_prev() end, "n", desc = "Go to previous diagnostic"},
     }
