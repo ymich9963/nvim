@@ -41,8 +41,8 @@ vim.opt.shellquote = ''
 -- Something to do with quickfix menu not working
 -- vim.g.compiler_gcc_ignore_unmatched_lines = true
 
--- Augroup and Autocmd for (un)setting wrapping in Markdown files
-vim.cmd(" augroup md_augroup | autocmd BufRead *.md set wrap | autocmd BufLeave *.md set nowrap")
+-- Augroup and Autocmd for setting wrapping in Markdown files
+vim.cmd(" augroup md_augroup | autocmd BufEnter *.md set wrap")
 
 vim.cmd('colorscheme nanos')
 
