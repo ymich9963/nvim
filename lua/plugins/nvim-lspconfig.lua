@@ -8,6 +8,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
     },
     config = function ()
+        local home_dir = vim.env.HOME
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
         require("mason").setup()
         require("mason-lspconfig").setup()
@@ -27,8 +28,8 @@ return {
                 local lspconfig = require('lspconfig')
                 lspconfig.clangd.setup({
                     name = "clangd",
-                    -- cmd = {"C:\\Users\\yiannis\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--log=verbose"}
-                    cmd = {"C:\\Users\\yiannis\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
+                    -- cmd = {home_dir "\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--log=verbose"}
+                    cmd = {home_dir .. "\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
                 })
             end,
         }
