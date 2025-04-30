@@ -32,11 +32,14 @@ vim.opt.sessionoptions="blank,buffers,curdir,help,tabpages,winsize,winpos,termin
 
 -- Setttings to use Powershell, taken from toggleterm.nvim
 vim.opt.shell = vim.fn.executable('pwsh') == 1 and 'pwsh -NoLogo' or 'powershell -NoLogo'
-vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
 vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
 vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 vim.opt.shellxquote = ''
 vim.opt.shellquote = ''
+
+-- Fixes ANSI escape codes when using PS, taken from https://github.com/ConnorSweeneyDev/.config/issues/2#issuecomment-2209443983
+-- vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
 
 -- Something to do with quickfix menu not working
 -- vim.g.compiler_gcc_ignore_unmatched_lines = true
