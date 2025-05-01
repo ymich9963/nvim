@@ -9,6 +9,7 @@ return {
                 'lua-language-server',
                 'vim-language-server',
                 'pyright',
+                'markdown-oxide',
             },
 
             -- if set to true this will check each tool for updates. If updates
