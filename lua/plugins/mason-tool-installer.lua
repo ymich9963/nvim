@@ -10,6 +10,8 @@ return {
                 'vim-language-server',
                 'pyright',
                 'markdown-oxide',
+                'powershell-editor-services',
+                'neocmakelsp',
             },
 
             -- if set to true this will check each tool for updates. If updates
