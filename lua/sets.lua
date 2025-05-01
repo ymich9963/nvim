@@ -23,6 +23,7 @@ vim.opt.updatetime = 50
 vim.opt.termguicolors = true
 vim.opt.autochdir = true
 vim.opt.sessionoptions="blank,buffers,curdir,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.opt.winborder= "shadow"
 
 -- Forgot what this does
 -- vim.opt.colorcolumn = "80"
@@ -36,13 +37,25 @@ vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
 vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 vim.opt.shellxquote = ''
 vim.opt.shellquote = ''
-
--- Fixes ANSI escape codes when using PS, taken from https://github.com/ConnorSweeneyDev/.config/issues/2#issuecomment-2209443983
--- vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+-- Fixes ANSI escape codes when using PS and :!, taken from https://github.com/ConnorSweeneyDev/.config/issues/2#issuecomment-2209443983
 vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
 
--- Something to do with quickfix menu not working
--- vim.g.compiler_gcc_ignore_unmatched_lines = true
+-- Adds Prompt markers to pwsh shell, use [[ or ]] to navigate
+vim.api.nvim_create_autocmd('TermOpen', {
+    command = 'setlocal signcolumn=auto',
+})
+local ns = vim.api.nvim_create_namespace('my.terminal.prompt')
+vim.api.nvim_create_autocmd('TermRequest', {
+    callback = function(args)
+        if string.match(args.data.sequence, '^\027]133;A') then
+            local lnum = args.data.cursor[1]
+            vim.api.nvim_buf_set_extmark(args.buf, ns, lnum - 1, 0, {
+                sign_text = '▶',
+                sign_hl_group = 'SpecialChar',
+            })
+        end
+    end,
+})
 
 -- Augroup and Autocmd for setting wrapping in Markdown files
 vim.cmd(" augroup md_augroup | autocmd BufEnter *.md set wrap")

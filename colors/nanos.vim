@@ -67,6 +67,7 @@ hi! @lsp.typemod.function.defaultLibrary guifg=#65bcff
 hi! @keyword.vim cterm=italic gui=italic guifg=#fca7ea 
 hi! @property.vim guifg=#4fd633 
 hi! @variable.vim guifg=#c8d3f5
+hi! @markup.heading guifg=Grey
 
 " Indent backline
 hi! IblIndent guifg=#535561
