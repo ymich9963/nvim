@@ -29,6 +29,7 @@ Using,
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim.git): Key Hints.
 - [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo.git): Folding.
 - [rmagatti/auto-session](https://github.com/rmagatti/auto-session.git): Session manager.
+- [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive): Git integration for Vim.
 
 Colourscheme is my own in `colors/` and some fonts I like are in `fonts/`.
 
