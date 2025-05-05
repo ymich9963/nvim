@@ -9,7 +9,7 @@ return {
                 'lua-language-server',
                 'vim-language-server',
                 'pyright',
-                'markdown-oxide',
+                'marksman',
                 'powershell-editor-services',
                 'neocmakelsp',
             },
