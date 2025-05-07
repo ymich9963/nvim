@@ -55,7 +55,6 @@ Using `lazy.vim` to create a modular structure in `/lua`,
 - Run `:Lazy sync` to make sure everything is working
 
 ## Comments
-- Setting up the LSP required combining the example given in the Mason docs by executing `:h mason-lspconfig-automatic-server-setup` and the [setup](https://github.com/hrsh7th/nvim-cmp?tab=readme-ov-file#setup) provided by `nvim-cmp`.
 - Ships with a `diff.exe` in the `bin\` directory so that undotree works. This is because `diff.exe` no longer ships with NeoVim.
 - Ships with `tree-sitter-cli.exe` since some parsers need it.
 - Might need a C compiler and node.js installed for certain LSPs. 
