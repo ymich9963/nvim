@@ -25,6 +25,7 @@ Using,
 - [MeanderingProgrammer/render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim): Live rendering of markdown files. 
 - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim.git): Fancy TODO: comments .
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git): Syntax Highlighting.
+- [nvim-treesitter/nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context.git): Current code context.
 - [mbbill/undotree](https://github.com/mbbill/undotree.git): Improved Undo.
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim.git): Key Hints.
 - [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo.git): Folding.

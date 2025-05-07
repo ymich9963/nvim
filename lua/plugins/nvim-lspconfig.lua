@@ -2,35 +2,34 @@ return {
     "neovim/nvim-lspconfig",
     event = 'VimEnter',
     dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason.nvim",
+        "mason-org/mason-lspconfig.nvim",
     },
     config = function ()
         local home_dir = vim.env.HOME
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+        vim.lsp.config('lua_ls', {
+            settings = {
+                Lua = {
+                    runtime = {
+                        version = 'LuaJIT',
+                    },
+                    diagnostics = {
+                        globals = {
+                            'vim',
+                            'require',
+                        },
+                    },
+                },
+            },
+        })
+
+        vim.lsp.config('clangd', {
+            cmd = {home_dir .. "\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
+        })
+
         require("mason").setup()
         require("mason-lspconfig").setup()
-        require("mason-lspconfig").setup_handlers {
-            function (server_name) -- default handler (optional)
-                require("lspconfig")[server_name].setup {
-                    capabilities = capabilities,
-                    settings = {
-                        Lua = {
-                            diagnostics = { globals = {'vim'} } -- to remove the unkown global 'vim' warning
-                        }
-                    }
-                }
-            end,
-            -- used to start an LSP (clangd in this case) with specific settings
-            clangd = function()
-                local lspconfig = require('lspconfig')
-                lspconfig.clangd.setup({
-                    name = "clangd",
-                    -- cmd = {home_dir "\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--log=verbose"}
-                    cmd = {home_dir .. "\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
-                })
-            end,
-        }
 
         -- LSP diagnostics config
         vim.diagnostic.config({

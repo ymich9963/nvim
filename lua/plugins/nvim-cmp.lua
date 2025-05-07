@@ -1,4 +1,3 @@
-
 return {
     "hrsh7th/nvim-cmp",
     event = {"InsertEnter", "CmdlineEnter"},
@@ -61,43 +60,42 @@ return {
             view = {
                 entries = {name = 'custom', selection_order = 'near_cursor' }
             },
-            formatting = {
-                fields = { "kind", "abbr", "menu" },
-
-                format = function(entry, vim_item)
-                    lspkind.cmp_format({
-                        mode = "symbol_text",
-                    })(entry, vim.deepcopy(vim_item))
-                    local highlights_info = require("colorful-menu").cmp_highlights(entry)
-
-                    -- highlight_info is nil means we are missing the ts parser, it's
-                    -- better to fallback to use default `vim_item.abbr`. What this plugin
-                    -- offers is two fields: `vim_item.abbr_hl_group` and `vim_item.abbr`.
-                    if highlights_info ~= nil then
-                        vim_item.abbr_hl_group = highlights_info.highlights
-                        vim_item.abbr = highlights_info.text
-                    end
-                    local strings = vim.split(lspkind.kind, "%s", { trimempty = true })
-                    vim_item.kind = " " .. (strings[1] or "") .. " "
-                    vim_item.menu = ""
-
-                    return vim_item
-                end,
-            },
             -- formatting = {
-            --     format = lspkind.cmp_format({
-            --         mode = 'symbol_text', -- show symbol and text annotations. Other options are "text_symbol", "symbol" and "text".
-            --         maxwidth = {
-            --             -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-            --             -- can also be a function to dynamically calculate max width such as
-            --             -- menu = function() return math.floor(0.45 * vim.o.columns) end,
-            --             menu = 50, -- leading text (labelDetails)
-            --             abbr = 50, -- actual suggestion item
-            --         },
-            --         ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-            --         show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-            --     })
+            --     fields = { "kind", "abbr", "menu" },
+            --     format = function(entry, vim_item)
+            --         lspkind.cmp_format({
+            --             mode = "symbol_text",
+            --         })(entry, vim.deepcopy(vim_item))
+            --         local highlights_info = require("colorful-menu").cmp_highlights(entry)
+            --
+            --         -- highlight_info is nil means we are missing the ts parser, it's
+            --         -- better to fallback to use default `vim_item.abbr`. What this plugin
+            --         -- offers is two fields: `vim_item.abbr_hl_group` and `vim_item.abbr`.
+            --         if highlights_info ~= nil then
+            --             vim_item.abbr_hl_group = highlights_info.highlights
+            --             vim_item.abbr = highlights_info.text
+            --         end
+            --         local strings = vim.split(lspkind.kind, "%s", { trimempty = true })
+            --         vim_item.kind = " " .. (strings[1] or "") .. " "
+            --         vim_item.menu = ""
+            --
+            --         return vim_item
+            --     end,
             -- },
+            formatting = {
+                format = lspkind.cmp_format({
+                    mode = 'symbol_text', -- show symbol and text annotations. Other options are "text_symbol", "symbol" and "text".
+                    maxwidth = {
+                        -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                        -- can also be a function to dynamically calculate max width such as
+                        -- menu = function() return math.floor(0.45 * vim.o.columns) end,
+                        menu = 50, -- leading text (labelDetails)
+                        abbr = 50, -- actual suggestion item
+                    },
+                    ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+                    show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+                })
+            },
         })
 
         -- Use buffer source for `/` and `?`
