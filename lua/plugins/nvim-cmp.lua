@@ -10,7 +10,7 @@ return {
         "saadparwaiz1/cmp_luasnip",
         -- "j-hui/fidget.nvim",
         "onsails/lspkind.nvim",
-        "xzbdmw/colorful-menu.nvim",
+        -- "xzbdmw/colorful-menu.nvim",
     },
     config = function()
         local cmp = require('cmp')
