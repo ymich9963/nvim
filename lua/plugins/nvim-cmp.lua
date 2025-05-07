@@ -24,8 +24,9 @@ return {
                 end,
             },
             window = {
-                -- completion = cmp.config.window.bordered(),
-                -- documentation = cmp.config.window.bordered(),
+                documentation = {
+                    winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None'
+                }
             },
             mapping = cmp.mapping.preset.insert({
                 ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -61,7 +62,7 @@ return {
             },
             formatting = {
                 format = lspkind.cmp_format({
-                    mode = 'symbol', -- show only symbol annotations
+                    mode = 'symbol_text', -- show symbol and text annotations. Other options are "text_symbol", "symbol" and "text".
                     maxwidth = {
                         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                         -- can also be a function to dynamically calculate max width such as
@@ -72,7 +73,7 @@ return {
                     ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
                     show_labelDetails = true, -- show labelDetails in menu. Disabled by default
                 })
-            }
+            },
         })
 
         -- Use buffer source for `/` and `?`

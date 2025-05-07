@@ -41,15 +41,14 @@ hi! CursorLineNr guifg=#8c8c8c
 hi! SignColumn guifg=#535561 guibg=#000000
 
 " Popup menu
-hi! Pmenu guifg=#8c8c8c guibg=#111111 " Popup menu font and Background
-hi! PmenuSel ctermfg=242 ctermbg=0 guibg=#bbbbbb " Popup menu selection highlight
-hi! PmenuSbar ctermbg=248 guibg=Grey " Popup menu scroll background
-hi! PmenuThumb ctermbg=15 guibg=#c2c2c2 " Popup menu scroll thing
+hi! Pmenu gui=bold guifg=#c2c2c2 guibg=#2A2A2A " Popup menu font and Background
+hi! PmenuSel guibg=black guifg=#65bcff " Popup menu selection highlight and text highlight when selected
+hi! PmenuSbar guibg=Grey " Popup menu scroll background
+hi! PmenuThumb guibg=#c2c2c2 " Popup menu scroll thing
 
 " Tabline
 hi! TabLine cterm=NONE ctermfg=15 ctermbg=242 gui=NONE guibg=#000000 guifg=#373737
 hi! TabLineSel cterm=bold gui=bold guibg=lightblue guifg=#000000
-" hi! TabLineSel cterm=bold gui=bold guibg=#274134
 hi! TabLineFill cterm=NONE gui=NONE " Fill between the tabs
 
 " Tree-sitter
@@ -66,7 +65,7 @@ hi! @lsp.typemod.function.defaultLibrary guifg=#65bcff
 " Vimscript
 hi! @keyword.vim cterm=italic gui=italic guifg=#fca7ea 
 hi! @property.vim guifg=#4fd633 
-hi! @variable.vim guifg=#c8d3f5
+hi! link @variable.vim @lsp.type.variable
 hi! @markup.heading guifg=Grey
 
 " Indent backline
@@ -82,15 +81,30 @@ hi! @keyword.type.cpp guifg=lightblue
 " hi! @@comment.documentation.cpp guifg=#65bcff
 
 " Python
-hi! @variable.python guifg=#c8d3f5 
+hi! link @variable.python @lsp.type.variable
 hi! @variable.member.python guifg=#4fd633
 hi! @variable.parameter.python guifg=#ffc777
 hi! @variable.builtin.python gui=italic guifg=#fca7ea
 
-" Makrdown
+" Markdown
 hi!  @markup.heading.1.markdown guifg=#65bcff
 hi!  @markup.heading.2.markdown guifg=#4fd633
 hi!  @markup.heading.3.markdown guifg=#ffc777
 hi!  @markup.heading.4.markdown guifg=#fca7ea
 " could use markdownH1/2/3/4 before, not sure what happened.
+
+" nvim-cmp
+hi! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+hi! CmpItemAbbrMatch guibg=NONE guifg=#65bcff
+hi! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch
+hi! CmpItemKindVariable guibg=NONE guifg=#c8d3f5
+hi! link CmpItemKindInterface CmpItemKindVariable
+hi! link CmpItemKindText CmpItemKindVariable
+hi! CmpItemKindFunction guibg=NONE guifg=#fca7ea
+hi! link CmpItemKindMethod CmpItemKindFunction
+hi! CmpItemKindKeyword guibg=NONE guifg=#4fd633
+hi! link CmpItemKindProperty CmpItemKindKeyword
+hi! link CmpItemKindUnit CmpItemKindKeyword
+
+
 
