@@ -57,9 +57,6 @@ return {
             }, {
                 { name = 'buffer' },
             }),
-            view = {
-                entries = {name = 'custom', selection_order = 'near_cursor' }
-            },
             -- formatting = {
             --     fields = { "kind", "abbr", "menu" },
             --     format = function(entry, vim_item)
