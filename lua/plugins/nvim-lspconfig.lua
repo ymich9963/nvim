@@ -1,10 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
     event = 'VimEnter',
-    dependencies = {
-        "mason-org/mason.nvim",
-        "mason-org/mason-lspconfig.nvim",
-    },
     config = function ()
         local home_dir = vim.env.HOME
 
@@ -27,9 +23,6 @@ return {
         vim.lsp.config('clangd', {
             cmd = {home_dir .. "\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
         })
-
-        require("mason").setup()
-        require("mason-lspconfig").setup()
 
         -- LSP diagnostics config
         vim.diagnostic.config({
