@@ -34,7 +34,7 @@ return {
             severity_sort = true,
         })
 
-        -- Built-in auto-complete. Has the re-maps for a nicer functioning pmenu. "map_cr" must be set to false for nvim-autopairs for the selections to confirm as expected.
+        -- Built-in auto-complete. Has the re-maps for a nicer functioning pmenu.
         -- vim.cmd[[set completeopt+=menuone,noselect,popup]]
         -- vim.api.nvim_create_autocmd("LspAttach", {
         --     group = vim.api.nvim_create_augroup("my.lsp", {}),
