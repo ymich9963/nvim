@@ -36,7 +36,7 @@ return {
                     { " Find File", "FzfLua files", "<leader>ff" },
                     { "󰍉 Find Word", "FzfLua live_grep", "<leader>lg" },
                     { " Recent Files", "FzfLua oldfiles", "<leader>of" },
-                    { " Colorschemes", "FzfLua colorscheme", "<leader>cs" },
+                    { " Colorschemes", "FzfLua colorschemes", "<leader>cs" },
                 },
                 highlight = "String",
                 default_color = "",
