@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd('TermRequest', {
 })
 
 -- Augroup and Autocmd for setting wrapping in Markdown files
-vim.cmd(" augroup md_augroup | autocmd BufEnter *.md set wrap")
+vim.cmd(" augroup md_augroup | autocmd BufEnter *.md set wrap | autocmd BufLeave *.md set nowrap")
 
 vim.cmd('colorscheme nanos')
 

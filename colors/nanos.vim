@@ -28,6 +28,12 @@ hi! Visual ctermbg=NONE guibg=#2A2A2A
 hi! CursorLine guifg=NONE guibg=#151515
 hi! MatchParen guibg=#000000 guifg=#ff966c
 
+" Diff
+hi! DiffAdd gui=NONE guifg=NONE guibg=#00402A
+hi! DiffChange gui=NONE guifg=NONE guibg=#402A00
+hi! DiffDelete gui=NONE guifg=NONE guibg=#400000
+hi! DiffText gui=NONE guifg=NONE guibg=#8CBEE2
+
 " Folding
 hi! Folded guibg=#000000 gui=bold,italic
 
@@ -105,6 +111,4 @@ hi! link CmpItemKindMethod CmpItemKindFunction
 hi! CmpItemKindKeyword guibg=NONE guifg=#4fd633
 hi! link CmpItemKindProperty CmpItemKindKeyword
 hi! link CmpItemKindUnit CmpItemKindKeyword
-
-
 
