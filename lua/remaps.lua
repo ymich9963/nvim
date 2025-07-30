@@ -5,9 +5,8 @@ vim.keymap.set("t", "<ESC>", "<C-\\><C-n>") -- Escape the terminal and go back t
 vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>") -- Ctr-w in terminal mode
 
 -- The ones below here are from ThePrimeagen/init.lua repo
-vim.keymap.set("x", "<leader>p", [["_dP]], {desc = "Paste without replacing what was copied"})
+vim.keymap.set({"n", "v"}, "<leader>p", [["+p]], {desc = "Paste from system clipboard"})
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {desc = "Copy to system clipboard"})
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "Replace in file, case sensitive"})
 
 -- Move a selection up or down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")

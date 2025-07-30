@@ -5,7 +5,7 @@ vim.g.maplocalleader = " "
 -- Cursor
 -- vim.opt.guicursor = ""
 -- Based on the default and another example in the docs, blinks when input and doesn't when no input
-vim.opt.guicursor = "n-v-c-sm:block-Cursor/lCursor,i-ci-ve:block-blinkon300-blinkoff300-blinkwait10,r-cr-o:block,t:block-blinkon500-blinkoff500-TermCursor"
+vim.opt.guicursor = "n-v-c-sm:block-Cursor/lCursor,i-ci-ve:block-blinkon300-blinkoff300-blinkwait10,r-cr-o:hor25,t:block-blinkon500-blinkoff500-TermCursor"
 
 -- Tabs and shift
 vim.opt.tabstop = 4
@@ -68,7 +68,7 @@ vim.opt.laststatus = 2
 vim.opt.errorbells = false -- No error bells
 vim.opt.backspace = "indent,eol,start" -- Better backspace behavior
 vim.opt.path:append("**") -- Include subdirectories in search
--- vim.opt.selection = "exclusive" -- Visual mode selection behavior
+-- vim.opt.selection = "exclusive" -- Visual mode selection behavior, not sure how this works yet
 vim.opt.mouse = "a" -- Enable mouse support
 vim.opt.modifiable = true -- Allow buffer modifications
 vim.opt.encoding = "UTF-8" -- Set encoding
