@@ -9,7 +9,6 @@ My nvim config that I use on my Windows machine.
 Using,
 
 - [lazy.nvim](https://github.com/folke/lazy.nvim.git): Plugin Manager.
-- [startup.nvim](https://github.com/max397574/startup.nvim): NeoVim Homepage.
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs.git): Makes using brackets easier.
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim.git): Indentation.
 - [NvChad/nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua): View colour codes. 
