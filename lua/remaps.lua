@@ -27,10 +27,10 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set({"n", "v"}, "<C-w>q", "<nop>", {desc = "Default use is to close a window, disabled it"})
 
 -- Quickfix list stuff
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<leader>qn", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<leader>qp", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>qk", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>qj", "<cmd>lprev<CR>zz")
 
 -- The ones below are from radleylewis/nvim-lite/blob/youtube_demo/init.lua
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
@@ -47,3 +47,4 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase w
 
 -- Quick file navigation
 vim.keymap.set("n", "<leader>ff", ":find ", { desc = "Find file" })
+
