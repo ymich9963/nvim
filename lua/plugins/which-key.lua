@@ -3,4 +3,5 @@ return {
     config = function()
         vim.keymap.set("n", "<leader>wk", ":WhichKey<CR>")
     end,
+    cmd = {"WhichKey"},
 }

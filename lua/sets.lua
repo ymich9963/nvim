@@ -76,18 +76,17 @@ vim.opt.encoding = "UTF-8" -- Set encoding
 vim.opt.sessionoptions="blank,buffers,curdir,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.winborder= "shadow"
 
--- Hopefully they fix the path issue with this one day
--- vim.opt.shell = '"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -NoLogo'
-
 -- Setttings to use Powershell, taken from toggleterm.nvim
 vim.opt.shell = vim.fn.executable('pwsh') == 1 and 'pwsh -NoLogo' or 'powershell -NoLogo'
 vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
 vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 vim.opt.shellxquote = ''
 vim.opt.shellquote = ''
-
 -- Fixes ANSI escape codes when using PS and :!, taken from https://github.com/ConnorSweeneyDev/.config/issues/2#issuecomment-2209443983
 vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
+-- Hopefully they fix the path issue with this one day
+-- vim.opt.shell = '"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -NoLogo'
+
 
 -- Adds Prompt markers to pwsh shell, use [[ or ]] to navigate
 vim.api.nvim_create_autocmd('TermOpen', {

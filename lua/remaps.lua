@@ -33,7 +33,6 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- The ones below are from radleylewis/nvim-lite/blob/youtube_demo/init.lua
--- Delete without yanking
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
 
 -- Better indenting in visual mode
@@ -47,5 +46,4 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease wi
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- Quick file navigation
-vim.keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "Open file explorer" })
 vim.keymap.set("n", "<leader>ff", ":find ", { desc = "Find file" })
