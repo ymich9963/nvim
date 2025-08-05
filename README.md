@@ -15,8 +15,6 @@ Using,
 - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): Bridge for Mason and NeoVim LSP.
 - [WhoIsSethDaniel/mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) Mason plugin to automatically install Mason tools.
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): NeoVim LSP.
-- [shortcuts/no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim): Auto-centre when using one buffer.
-- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion engine.
 - [danymat/neogen](https://github.com/danymat/neogen): Auto-generate doxygen data. 
 - [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua): Fuzzy file finding with grep, also installed some optional dependencies .
 - [MeanderingProgrammer/render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim): Live rendering of markdown files. 
@@ -24,10 +22,8 @@ Using,
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git): Syntax Highlighting.
 - [nvim-treesitter/nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context.git): Current code context.
 - [mbbill/undotree](https://github.com/mbbill/undotree.git): Improved Undo.
-- [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo.git): Folding.
 - [rmagatti/auto-session](https://github.com/rmagatti/auto-session.git): Session manager.
 - [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive.git): Git integration for Vim.
-- [vuciv/golf](https://github.com/vuciv/golf.git): For challenges.
 
 Colourscheme is my own in `colors/` and some fonts I like are in `fonts/`.
 

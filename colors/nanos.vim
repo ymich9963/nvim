@@ -26,7 +26,7 @@ hi! WarningMsg guifg=#ffc777
 hi! Title ctermfg=NONE gui=bold guifg=#222222
 hi! Visual ctermbg=NONE guibg=#2A2A2A
 hi! CursorLine guifg=NONE guibg=#151515
-hi! MatchParen guibg=#000000 guifg=#ff966c
+hi! MatchParen guibg=#151515 guifg=#ff966c
 
 " Diff
 hi! DiffAdd gui=NONE guifg=NONE guibg=#00402A
@@ -51,6 +51,8 @@ hi! Pmenu gui=bold guifg=#c2c2c2 guibg=#2A2A2A " Popup menu font and Background
 hi! PmenuSel guibg=black guifg=#65bcff " Popup menu selection highlight and text highlight when selected
 hi! PmenuSbar guibg=Grey " Popup menu scroll background
 hi! PmenuThumb guibg=#c2c2c2 " Popup menu scroll thing
+hi! PmenuMatch guibg=NONE guifg=#65bcff
+hi! PmenuKind guifg=#ffc777
 
 " Tabline
 hi! TabLine cterm=NONE ctermfg=15 ctermbg=242 gui=NONE guibg=#000000 guifg=#373737
@@ -99,7 +101,6 @@ hi!  @markup.heading.3.markdown guifg=#ffc777
 hi!  @markup.heading.4.markdown guifg=#fca7ea
 hi!  RenderMarkdownCodeInline guibg=#222222
 hi!  RenderMarkdownCode guibg=#222222
-" could use markdownH1/2/3/4 before, not sure what happened.
 
 " nvim-cmp
 hi! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080

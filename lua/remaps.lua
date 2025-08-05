@@ -15,10 +15,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Append line and cursor remains in the same place
 vim.keymap.set("n", "J", "mzJ`z")
 
--- Half page jumps with cursor centered on screen
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
 -- Keep cursor in the middle when searching
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -26,15 +22,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- I hate <C-w>q
 vim.keymap.set({"n", "v"}, "<C-w>q", "<nop>", {desc = "Default use is to close a window, disabled it"})
 
--- Quickfix list stuff
-vim.keymap.set("n", "<leader>qn", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<leader>qp", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>qk", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>qj", "<cmd>lprev<CR>zz")
-
 -- The ones below are from radleylewis/nvim-lite/blob/youtube_demo/init.lua
-vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
-
 -- Better indenting in visual mode
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
@@ -48,3 +36,5 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase w
 -- Quick file navigation
 vim.keymap.set("n", "<leader>ff", ":find ", { desc = "Find file" })
 
+-- LSP Remaps
+vim.keymap.set("n", "<leader>fd", function() vim.diagnostic.open_float(nil, {focus=false}) end, {desc = "Open diagnostics in float window"})
