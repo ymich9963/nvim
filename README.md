@@ -9,7 +9,6 @@ My nvim config that I use on my Windows machine.
 Using,
 
 - [lazy.nvim](https://github.com/folke/lazy.nvim.git): Plugin Manager.
-- [nvim-autopairs](https://github.com/windwp/nvim-autopairs.git): Makes using brackets easier.
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim.git): Indentation.
 - [NvChad/nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua): View colour codes. 
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim): LSP Manager.
@@ -17,20 +16,17 @@ Using,
 - [WhoIsSethDaniel/mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) Mason plugin to automatically install Mason tools.
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): NeoVim LSP.
 - [shortcuts/no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim): Auto-centre when using one buffer.
-- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion Engine.
+- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion engine.
 - [danymat/neogen](https://github.com/danymat/neogen): Auto-generate doxygen data. 
-- [numToStr/Comment.nvim](https://github.com/numToStr/Comment.nvim): Commenting.
 - [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua): Fuzzy file finding with grep, also installed some optional dependencies .
 - [MeanderingProgrammer/render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim): Live rendering of markdown files. 
 - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim.git): Fancy TODO: comments .
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git): Syntax Highlighting.
 - [nvim-treesitter/nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context.git): Current code context.
 - [mbbill/undotree](https://github.com/mbbill/undotree.git): Improved Undo.
-- [folke/which-key.nvim](https://github.com/folke/which-key.nvim.git): Key Hints.
 - [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo.git): Folding.
 - [rmagatti/auto-session](https://github.com/rmagatti/auto-session.git): Session manager.
 - [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive.git): Git integration for Vim.
-- [tpope/vim-sleuth](https://github.com/tpope/vim-sleuth.git): To help with tabs and spaces in files.
 - [vuciv/golf](https://github.com/vuciv/golf.git): For challenges.
 
 Colourscheme is my own in `colors/` and some fonts I like are in `fonts/`.

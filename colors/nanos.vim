@@ -97,6 +97,8 @@ hi!  @markup.heading.1.markdown guifg=#65bcff
 hi!  @markup.heading.2.markdown guifg=#4fd633
 hi!  @markup.heading.3.markdown guifg=#ffc777
 hi!  @markup.heading.4.markdown guifg=#fca7ea
+hi!  RenderMarkdownCodeInline guibg=#222222
+hi!  RenderMarkdownCode guibg=#222222
 " could use markdownH1/2/3/4 before, not sure what happened.
 
 " nvim-cmp
