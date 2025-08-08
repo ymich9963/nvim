@@ -1,5 +1,7 @@
 local home_dir = vim.env.HOME
 
+vim.lsp.enable({"clangd", "lua_ls", "pyright", "vim-language-server", "powershell-editor-services", "marksman", "neocmakelsp"})
+
 vim.lsp.config("clangd", {
     cmd = {home_dir .. "\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
 })
