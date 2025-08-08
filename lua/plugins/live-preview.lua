@@ -4,5 +4,6 @@ return {
         require('livepreview.config').set({
             port = 55555,
         })
-    end
+    end,
+    cmd = {"LivePreview"}
 }
