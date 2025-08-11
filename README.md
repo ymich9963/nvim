@@ -12,8 +12,6 @@ Using,
 - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim.git): Indentation.
 - [NvChad/nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua): View colour codes. 
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim): LSP Manager.
-- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim): Bridge for Mason and NeoVim LSP.
-- [WhoIsSethDaniel/mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) Mason plugin to automatically install Mason tools.
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): NeoVim LSP.
 - [danymat/neogen](https://github.com/danymat/neogen): Auto-generate doxygen data. 
 - [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua): Fuzzy file finding with grep, also installed some optional dependencies .
