@@ -49,6 +49,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         )
     end
 
+    -- Documentation formatting when using auto-completion
     if client:supports_method("completionItem/resolve") then
         local _, cancel_prev = nil, function() end
         vim.api.nvim_create_autocmd("CompleteChanged", { buffer = ev.buf,

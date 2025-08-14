@@ -33,8 +33,5 @@ vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window heig
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
--- Quick file navigation
-vim.keymap.set("n", "<leader>ff", ":find ", { desc = "Find file" })
-
 -- LSP Remaps
 vim.keymap.set("n", "<leader>fd", function() vim.diagnostic.open_float(nil, {focus=false}) end, {desc = "Open diagnostics in float window"})
