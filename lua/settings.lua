@@ -35,23 +35,6 @@ vim.opt.shellquote = ''
 vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
 -- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
 
--- Adds Prompt markers to shell, use [[ or ]] to navigate
-vim.api.nvim_create_autocmd('TermOpen', {
-    command = 'setlocal signcolumn=auto',
-})
-local ns = vim.api.nvim_create_namespace('my.terminal.prompt')
-vim.api.nvim_create_autocmd('TermRequest', {
-    callback = function(args)
-        if string.match(args.data.sequence, '^\027]133;A') then
-            local lnum = args.data.cursor[1]
-            vim.api.nvim_buf_set_extmark(args.buf, ns, lnum - 1, 0, {
-                sign_text = '▶',
-                sign_hl_group = 'SpecialChar',
-            })
-        end
-    end,
-})
-
 -- Augroup and Autocmd for setting wrapping in Markdown files
 vim.cmd(" augroup md_augroup | autocmd BufEnter *.md set wrap | autocmd BufLeave *.md set nowrap")
 
