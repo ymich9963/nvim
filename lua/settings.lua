@@ -1,5 +1,7 @@
 -- Leader
 vim.g.mapleader = " "
+vim.g.netrw_keepdir = 0
+vim.g.netrw_liststyle = 1 -- wide style with ls
 
 vim.opt.tabstop = 4 -- Tabs and shift
 vim.opt.expandtab = true
@@ -11,7 +13,6 @@ vim.opt.number = true -- Line numbers
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.autochdir = true
 vim.opt.hlsearch = false -- Searching highlights
 vim.opt.termguicolors = true -- Nice term colours
 vim.opt.cursorline = true -- Cursor highlight line
