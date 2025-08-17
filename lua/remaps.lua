@@ -3,7 +3,7 @@ vim.keymap.set("n", "<leader>re", ":%s/<C-R><C-W>/") -- Shortcut to replace curr
 vim.keymap.set("n", "<leader>rl", ":.s/") -- Shortcut to replace a word in line
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>") -- Escape the terminal and go back to normal mode
 vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>") -- Ctr-w in terminal mode
-vim.keymap.set("n", "<leader>o", ":Explore<CR>") -- Netrw
+vim.keymap.set("n", "<leader>o", ":Explore .<CR>") -- Netrw
 
 -- The ones below here are from ThePrimeagen/init.lua repo
 vim.keymap.set({"n", "v"}, "<leader>p", [["+p]], {desc = "Paste from system clipboard"})
