@@ -2,7 +2,10 @@
 vim.g.mapleader = " "
 vim.g.netrw_keepdir = 0
 vim.g.netrw_liststyle = 1 -- wide style with ls
+vim.g.netrw_banner = 0
 
+vim.opt.splitbelow = true -- Keeps the below window when splitting or quiting
+vim.opt.equalalways = false -- Does not make windows equal automatically
 vim.opt.tabstop = 4 -- Tabs and shift
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
