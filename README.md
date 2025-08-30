@@ -15,7 +15,6 @@ Using,
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): NeoVim LSP.
 - [danymat/neogen](https://github.com/danymat/neogen): Auto-generate doxygen data. 
 - [brianhuster/live-preview.nvim](https://github.com/brianhuster/live-preview.nvim): Live rendering of markdown files in browser. 
-- [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim.git): Fancy TODO: comments.
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git): Syntax Highlighting.
 - [nvim-treesitter/nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context.git): Current code context.
 - [mbbill/undotree](https://github.com/mbbill/undotree.git): Improved Undo.

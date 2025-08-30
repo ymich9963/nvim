@@ -56,6 +56,16 @@ hi! TabLine cterm=NONE ctermfg=15 ctermbg=242 gui=NONE guibg=#14161b guifg=#3737
 hi! TabLineSel cterm=bold gui=bold guibg=lightblue guifg=#14161b
 hi! TabLineFill cterm=NONE gui=NONE " Fill between the tabs
 
+" Special Comments
+hi! TODO guibg=NvimLightCyan guifg=Black
+call matchadd("TODO", '\S\sTODO:')
+hi! INFO guibg=NvimLightBlue guifg=Black
+call matchadd("INFO", '\S\sINFO:')
+hi! FIX guibg=NvimLightYellow guifg=Black
+call matchadd("FIX", '\S\sFIX:')
+hi! BUG guibg=NvimLightRed guifg=Black
+call matchadd("BUG", '\S\sBUG:')
+
 " Tree-sitter
 hi! @operator guifg=#89ddff 
 hi! @punctuation guifg=#535561 " Brackets
