@@ -58,13 +58,13 @@ hi! TabLineFill cterm=NONE gui=NONE " Fill between the tabs
 
 " Special Comments
 hi! TODO guibg=NvimLightCyan guifg=Black
-call matchadd("TODO", '\S\sTODO:')
+call matchadd("TODO", 'TODO:')
 hi! INFO guibg=NvimLightBlue guifg=Black
-call matchadd("INFO", '\S\sINFO:')
+call matchadd("INFO", 'INFO:')
 hi! FIX guibg=NvimLightYellow guifg=Black
-call matchadd("FIX", '\S\sFIX:')
+call matchadd("FIX", 'FIX:')
 hi! BUG guibg=NvimLightRed guifg=Black
-call matchadd("BUG", '\S\sBUG:')
+call matchadd("BUG", 'BUG:')
 
 " Tree-sitter
 hi! @operator guifg=#89ddff 
