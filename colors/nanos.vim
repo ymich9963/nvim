@@ -58,13 +58,17 @@ hi! TabLineFill cterm=NONE gui=NONE " Fill between the tabs
 
 " Special Comments
 hi! TODO guibg=NvimLightCyan guifg=Black
-call matchadd("TODO", 'TODO:')
 hi! INFO guibg=NvimLightBlue guifg=Black
-call matchadd("INFO", 'INFO:')
 hi! FIX guibg=NvimLightYellow guifg=Black
-call matchadd("FIX", 'FIX:')
 hi! BUG guibg=NvimLightRed guifg=Black
-call matchadd("BUG", 'BUG:')
+
+" Make the matches for the SpecialComments at every window
+augroup SpecialComments
+    autocmd WinEnter * call matchadd("TODO", 'TODO:')
+    autocmd WinEnter * call matchadd("INFO", 'INFO:')
+    autocmd WinEnter * call matchadd("FIX", 'FIX:')
+    autocmd WinEnter * call matchadd("BUG", 'BUG:')
+augroup END
 
 " Tree-sitter
 hi! @operator guifg=#89ddff 

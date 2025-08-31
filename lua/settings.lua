@@ -37,4 +37,3 @@ vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]
 -- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
 
 vim.cmd('colorscheme nanos') -- Colourscheme
-
