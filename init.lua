@@ -1,5 +1,155 @@
-require("settings")
-require("remaps")
-require("manager")
-require("lsp")
+--NVIM-CONFIG--
 
+-- SETTINGS ---
+vim.g.mapleader = " " -- Leader
+vim.g.netrw_keepdir = 0
+vim.g.netrw_liststyle = 1 -- wide style with ls
+vim.g.netrw_banner = 0
+vim.opt.splitbelow = true -- Keeps the below window when splitting or quiting
+vim.opt.equalalways = false -- Does not make windows equal automatically
+vim.opt.tabstop = 4 -- Tabs and shift
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true -- Indents
+vim.opt.wrap = false -- Wrap
+vim.opt.number = true -- Line numbers
+vim.opt.relativenumber = true
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.hlsearch = false -- Searching highlights
+vim.opt.termguicolors = true -- Nice term colours
+vim.opt.cursorline = true -- Cursor highlight line
+vim.opt.signcolumn = "yes" -- Sign column next to lines
+vim.opt.scrolloff = 10
+vim.opt.winborder= "rounded"
+vim.opt.path:append{"**"} -- Use :find for all subdirectories
+vim.opt.completeopt:append{"fuzzy"} -- Fuzzy completion
+vim.opt.wildoptions:append{"fuzzy"} -- Fuzzy wild menu
+vim.opt.foldenable = false
+vim.opt.foldcolumn = '0'
+vim.opt.foldtext = " "
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99
+vim.opt.shell = vim.fn.executable('pwsh') == 1 and 'pwsh -NoLogo' or 'powershell -NoLogo' -- Setttings to use Powershell, taken from toggleterm.nvim
+vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
+vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+vim.opt.shellxquote = ''
+vim.opt.shellquote = ''
+-- Fixes ANSI escape codes when using PS and :!, taken from https://github.com/ConnorSweeneyDev/.config/issues/2#issuecomment-2209443983
+vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
+-- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
+
+vim.cmd('colorscheme nanos') -- Colourscheme
+--END-SETTINGS---
+
+--REMAPS--
+vim.keymap.set("n", "<C-i>", "gg=G``")                                                      -- Auto-indent and go back to position
+vim.keymap.set("n", "<leader>re", ":%s/<C-R><C-W>/")                                        -- Shortcut to replace current word under cursor
+vim.keymap.set("n", "<leader>rl", ":.s/")                                                   -- Shortcut to replace a word in line
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")                                                 -- Escape the terminal and go back to normal mode
+vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>")                                            -- Ctr-w in terminal mode
+vim.keymap.set("n", "<leader>o", ":Explore .<CR>")                                          -- Netrw
+vim.keymap.set({"n", "v"}, "<leader>p", [["+p]], {desc = "Paste from system clipboard"})
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {desc = "Copy to system clipboard"})
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")                                                -- Move a selection up or down
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "J", "mzJ`z")                                                           -- Append line and cursor remains in the same place
+vim.keymap.set("n", "n", "nzzzv")                                                           -- Keep cursor in the middle when searching
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })                      -- Better indenting in visual mode
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })        -- Resizing
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+vim.keymap.set("n", "<leader>fd", function() vim.diagnostic.open_float(nil, {focus=false}) end, {desc = "Open diagnostics in float window"}) -- LSP Remaps
+--END-REMAPS--
+
+--PLUGINS--
+require("manager")
+--END-PLUGINS--
+
+--LSP--
+vim.lsp.enable({"clangd", "lua_ls", "pyright", "vim-language-server", "powershell-editor-services", "marksman", "neocmakelsp"})
+
+vim.lsp.config("clangd", {
+    cmd = {vim.env.HOME .. "\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
+})
+
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+        },
+    },
+})
+
+-- LSP diagnostics config
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+    severity_sort = true,
+})
+
+-- Builtin completion
+vim.opt.completeopt = { "menuone", "noselect", "popup" }
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client:supports_method("textDocument/completion") then
+            local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+            client.server_capabilities.completionProvider.triggerCharacters = chars
+            vim.lsp.completion.enable( true, client.id, ev.buf,
+            {
+                autotrigger = true,
+                convert = function(item)
+                    local abbr = item.label
+                    abbr = #abbr > 30 and abbr:sub(1, 29) .. "…" or abbr
+
+                    local menu = item.detail or ""
+                    menu = #menu > 30 and menu:sub(1, 29) .. "…" or menu
+
+                    return { abbr = abbr, menu = menu }
+                end
+            }
+        )
+    end
+
+    -- Documentation formatting when using auto-completion
+    if client:supports_method("completionItem/resolve") then
+        local _, cancel_prev = nil, function() end
+        vim.api.nvim_create_autocmd("CompleteChanged", { buffer = ev.buf,
+        callback = function(event)
+            cancel_prev()
+
+            local info = vim.fn.complete_info({ "selected" })
+            local completionItem =
+            vim.tbl_get(vim.v.completed_item, "user_data", "nvim", "lsp", "completion_item")
+            if not completionItem then
+                return
+            end
+
+            _, cancel_prev = vim.lsp.buf_request( event.buf, vim.lsp.protocol.Methods.completionItem_resolve, completionItem,
+            function(err, item, ctx)
+                if not item then
+                    return
+                end
+
+                local docs = (item.documentation or {}).value
+                local win = vim.api.nvim__complete_set(info["selected"], { info = docs })
+                if win.winid and vim.api.nvim_win_is_valid(win.winid) then
+                    vim.treesitter.start(win.bufnr, "markdown")
+                    vim.wo[win.winid].conceallevel = 3
+                end
+            end
+        )
+    end
+})
+end
+end
+})
+--END-LSP--
