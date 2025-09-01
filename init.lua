@@ -13,10 +13,10 @@ vim.opt.shiftwidth = 4
 vim.opt.smartindent = true -- Indents
 vim.opt.wrap = false -- Wrap
 vim.opt.number = true -- Line numbers
+-- vim.opt.hlsearch = false -- Searching highlights
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.hlsearch = false -- Searching highlights
 vim.opt.termguicolors = true -- Nice term colours
 vim.opt.cursorline = true -- Cursor highlight line
 vim.opt.signcolumn = "yes" -- Sign column next to lines
@@ -39,6 +39,7 @@ vim.opt.shellquote = ''
 vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
 -- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
 
+vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 vim.cmd('colorscheme nanos') -- Colourscheme
 --END-SETTINGS---
 
