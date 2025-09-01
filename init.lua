@@ -13,7 +13,6 @@ vim.opt.shiftwidth = 4
 vim.opt.smartindent = true -- Indents
 vim.opt.wrap = false -- Wrap
 vim.opt.number = true -- Line numbers
--- vim.opt.hlsearch = false -- Searching highlights
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
