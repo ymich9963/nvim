@@ -70,21 +70,30 @@ require("manager")
 --END-PLUGINS--
 
 --LSP--
-vim.lsp.enable({"clangd", "lua_ls", "pyright", "vim-language-server", "powershell-editor-services", "marksman", "neocmakelsp"})
-
 vim.lsp.config("clangd", {
     cmd = {vim.env.HOME .. "\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
 })
+vim.lsp.enable({"clangd"})
 
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
             workspace = {
-                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+                library = {
+                    vim.env.VIMRUNTIME
+                }
             },
         },
     },
 })
+vim.lsp.enable({"lua_ls"})
+
+vim.lsp.config("powershell-editor-services", {})
+vim.lsp.enable({"powershell-editor-services"})
+
+vim.lsp.config("pyright", {})
+vim.lsp.enable({"pyright"})
 
 -- LSP diagnostics config
 vim.diagnostic.config({

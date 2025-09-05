@@ -1,6 +1,18 @@
 return {
     "danymat/neogen",
-    config = true,
+    config = function ()
+        require('neogen').setup {
+            enabled = true,
+            languages = {
+                python = {
+                    template = {
+                        annotation_convention = "reST"
+                    }
+                },
+            }
+        }
+    end,
     lazy = true,
     cmd = { "Neogen" },
+
 }
