@@ -39,6 +39,14 @@ vim.opt.shellquote = ''
 vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
 -- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
 
+-- Make the matches for the Special Comments at every window
+vim.cmd([[augroup SpecialComments
+autocmd WinEnter * call matchadd("TODO", 'TODO:')
+autocmd WinEnter * call matchadd("INFO", 'INFO:')
+autocmd WinEnter * call matchadd("FIX", 'FIX:')
+autocmd WinEnter * call matchadd("BUG", 'BUG:')
+augroup END]])
+
 vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 vim.cmd('colorscheme nanos') -- Colourscheme
 --END-SETTINGS---
@@ -144,12 +152,17 @@ require("lazy").setup({
         },
         {
             "nvim-treesitter/nvim-treesitter",
-            opts = {
-                ensure_installed = {"c", "cpp", "python", "json", "markdown", "markdown_inline", "javascript", "lua", "vim", "vimdoc", "doxygen", "html"}, -- 'latex' requires the tree-sitter CLI to be installed
-                sync_install = false,
-                auto_install = true,
-                highlight = { enable = true, },
-            }
+            branch = "master",
+            lazy = false,
+            build = ":TSUpdate",
+            config = function ()
+                require("nvim-treesitter.configs").setup({
+                    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+                    sync_install = false,
+                    highlight = { enable = true },
+                    indent = { enable = true },
+                })
+            end
         },
     }
 })
@@ -178,6 +191,9 @@ vim.lsp.enable({"lua_ls"})
 
 vim.lsp.config("powershell-editor-services", {})
 vim.lsp.enable({"powershell-editor-services"})
+
+vim.lsp.config("vimls", {})
+vim.lsp.enable({"vimls"})
 
 vim.lsp.config("pyright", {})
 vim.lsp.enable({"pyright"})

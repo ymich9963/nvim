@@ -62,14 +62,6 @@ hi! INFO guibg=NvimLightBlue guifg=Black
 hi! FIX guibg=NvimLightYellow guifg=Black
 hi! BUG guibg=NvimLightRed guifg=Black
 
-" Make the matches for the SpecialComments at every window
-augroup SpecialComments
-    autocmd WinEnter * call matchadd("TODO", 'TODO:')
-    autocmd WinEnter * call matchadd("INFO", 'INFO:')
-    autocmd WinEnter * call matchadd("FIX", 'FIX:')
-    autocmd WinEnter * call matchadd("BUG", 'BUG:')
-augroup END
-
 " Tree-sitter
 hi! @operator guifg=#89ddff 
 hi! @punctuation guifg=#535561 " Brackets
