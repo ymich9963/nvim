@@ -22,15 +22,9 @@ Using,
 - [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive.git): Git integration for Vim.
 
 ## Structure
-Using `lazy.vim` to create a modular structure in `/lua`,
-
-- `plugins/` contains all the plugin `.lua` files.
 - `colors/` contains `nanos` colorscheme.
 - `after/ftplugin` contains filetype-specific settings.
-- `manager.lua` to setup `lazy.vim`.
-- `remaps.lua` for key remappings.
-- `settings.lua` for general settings.
-- `lsp.lua` for LSP.
+- 'init.lua' has everything else.
 
 # Setup
 ### Windows
@@ -42,9 +36,7 @@ git clone https://github.com/ymich9963/nvim-config $HOME\AppData\Local\nvim
 ```bash
 git clone https://github.com/ymich9963/nvim-config ~/.config/nvim
 ``` 
-
-## Plugin Setup
-- Run `:Lazy sync` to make sure everything is working
+Then run `:Lazy sync` to make sure everything is working
 
 ## Comments
 - Using [Inconsolata](https://fonts.google.com/specimen/Inconsolata) Regular as the font.

@@ -5,6 +5,7 @@ vim.g.mapleader = " " -- Leader
 vim.g.netrw_keepdir = 0
 vim.g.netrw_liststyle = 1 -- wide style with ls
 vim.g.netrw_banner = 0
+vim.g.netrw_special_syntax = true
 vim.opt.splitbelow = true -- Keeps the below window when splitting or quiting
 vim.opt.equalalways = false -- Does not make windows equal automatically
 vim.opt.tabstop = 4 -- Tabs and shift
@@ -65,12 +66,99 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase w
 --END-REMAPS--
 
 --PLUGINS--
-require("manager")
+
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out, "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Setup lazy.nvim
+require("lazy").setup({
+    spec = {
+        { "mason-org/mason.nvim", opts = {} },
+        { "neovim/nvim-lspconfig" },
+        { "mbbill/undotree", keys = { {"<leader>ut", vim.cmd.UndotreeToggle, "n", desc = "Toggle Undotree"}, }, },
+        { "NvChad/nvim-colorizer.lua", lazy = true, opts = {}, cmd= {"ColorizerToggle"} },
+        { "tpope/vim-fugitive", cmd = {"Git"} },
+        { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = { scope = {enabled = false} }, event = "BufReadPost" },
+        {
+            'rmagatti/auto-session',
+            lazy = false,
+            opts = {
+                suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+                lazy_support = true,
+                auto_restore = false, -- Enables/disables auto restoring session on start
+                auto_create = false, -- Enables/disables auto creating new session files. Can take a function that should return true/false if a new session file should be created or not
+                auto_restore_last_session = false, -- On startup, loads the last saved session if session for cwd does not exist
+            },
+            keys = {
+                { "<leader>sl", ":AutoSession search<CR>", desc = "List sessions", },
+                { "<leader>ss", ":AutoSession save", desc = "Save session", },
+                { "<leader>sd", ":AutoSession delete", desc = "Delete session", },
+                { "<leader>sr", ":AutoSession restore", desc = "Restore session", },
+            },
+        },
+        {
+            'brianhuster/live-preview.nvim',
+            opts = {
+                port = 55555,
+            },
+            cmd = {"LivePreview"}
+        },
+        {
+            "danymat/neogen",
+            opts = {
+                enabled = true,
+                languages = {
+                    python = {
+                        template = {
+                            annotation_convention = "reST"
+                        }
+                    },
+                }
+            },
+            lazy = true,
+            cmd = { "Neogen" },
+        },
+        {
+            "nvim-treesitter/nvim-treesitter-context",
+            dependencies = {
+                "nvim-treesitter/nvim-treesitter",
+            },
+            event = 'BufEnter',
+            opts =  {
+                max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
+            }
+        },
+        {
+            "nvim-treesitter/nvim-treesitter",
+            opts = {
+                ensure_installed = {"c", "cpp", "python", "json", "markdown", "markdown_inline", "javascript", "lua", "vim", "vimdoc", "doxygen", "html"}, -- 'latex' requires the tree-sitter CLI to be installed
+                sync_install = false,
+                auto_install = true,
+                highlight = { enable = true, },
+            }
+        },
+    }
+})
+
 --END-PLUGINS--
 
 --LSP--
 vim.lsp.config("clangd", {
-    cmd = {vim.env.HOME .. "\\AppData\\Local\\nvim-data\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
+    cmd = {vim.fn.stdpath("data") .. "\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
 })
 vim.lsp.enable({"clangd"})
 
