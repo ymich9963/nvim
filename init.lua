@@ -15,6 +15,7 @@ vim.opt.smartindent = true -- Indents
 vim.opt.wrap = false -- Wrap
 vim.opt.number = true -- Line numbers
 vim.opt.relativenumber = true
+vim.opt.incsearch = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.termguicolors = true -- Nice term colours
@@ -23,7 +24,7 @@ vim.opt.signcolumn = "yes" -- Sign column next to lines
 vim.opt.scrolloff = 10
 vim.opt.winborder= "rounded"
 vim.opt.path:append{"**"} -- Use :find for all subdirectories
-vim.opt.completeopt:append{"fuzzy"} -- Fuzzy completion
+vim.opt.completeopt = { "menuone", "noselect", "popup", "fuzzy" }
 vim.opt.wildoptions:append{"fuzzy"} -- Fuzzy wild menu
 vim.opt.foldenable = false
 vim.opt.foldcolumn = '0'
@@ -208,7 +209,6 @@ vim.diagnostic.config({
 })
 
 -- Builtin completion
-vim.opt.completeopt = { "menuone", "noselect", "popup" }
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
