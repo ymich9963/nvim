@@ -3,8 +3,6 @@
 <a href="https://dotfyle.com/ymich9963/nvim-config"><img src="https://dotfyle.com/ymich9963/nvim-config/badges/leaderkey?style=plastic" /></a>
 <a href="https://dotfyle.com/ymich9963/nvim-config"><img src="https://dotfyle.com/ymich9963/nvim-config/badges/plugin-manager?style=plastic" /></a>
 
-My nvim config that I use on my Windows machine.
-
 ## Plugins
 Using,
 
@@ -24,17 +22,17 @@ Using,
 ## Structure
 - `colors/` contains `nanos` colorscheme.
 - `after/ftplugin` contains filetype-specific settings.
-- 'init.lua' has everything else.
+- `init.lua` has everything else.
 
-# Setup
+## Setup
 ### Windows
 ```bash
-git clone https://github.com/ymich9963/nvim-config $HOME\AppData\Local\nvim
+git clone https://github.com/ymich9963/nvim $HOME\AppData\Local\nvim
 ``` 
 
 ### Linux
 ```bash
-git clone https://github.com/ymich9963/nvim-config ~/.config/nvim
+git clone https://github.com/ymich9963/nvim ~/.config/nvim
 ``` 
 Then run `:Lazy sync` to make sure everything is working
 
