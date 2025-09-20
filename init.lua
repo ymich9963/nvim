@@ -53,12 +53,11 @@ vim.cmd('colorscheme nanos') -- Colourscheme
 --END-SETTINGS---
 
 --REMAPS--
-vim.keymap.set("n", "<C-i>", "gg=G``")                                                      -- Auto-indent and go back to position
-vim.keymap.set("n", "<leader>re", ":%s/<C-R><C-W>/")                                        -- Shortcut to replace current word under cursor
-vim.keymap.set("n", "<leader>rl", ":.s/")                                                   -- Shortcut to replace a word in line
-vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")                                                 -- Escape the terminal and go back to normal mode
-vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>")                                            -- Ctr-w in terminal mode
-vim.keymap.set("n", "<leader>o", ":Explore .<CR>")                                          -- Netrw
+vim.keymap.set("n", "<C-i>", "gg=G``", {desc = "Auto-indent and go back to position"})                                                      -- 
+vim.keymap.set("n", "<leader>re", ":%s/<C-R><C-W>/", {desc = "Shortcut to replace current word under cursor"})
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", {desc = "Escape the terminal and go back to normal mode"})
+vim.keymap.set("n", "<leader>o", ":Explore .<CR>", {desc = "Netrw explore from cwd"})
+vim.keymap.set("n", "<leader>O", ":Explore <CR>", {desc= "Netrw explore from file directory"})
 vim.keymap.set({"n", "v"}, "<leader>p", [["+p]], {desc = "Paste from system clipboard"})
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {desc = "Copy to system clipboard"})
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")                                                -- Move a selection up or down
