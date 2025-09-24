@@ -100,7 +100,6 @@ require("lazy").setup({
         { "mbbill/undotree", keys = { {"<leader>ut", vim.cmd.UndotreeToggle, "n", desc = "Toggle Undotree"}, }, },
         { "NvChad/nvim-colorizer.lua", lazy = true, opts = {}, cmd= {"ColorizerToggle"} },
         { "tpope/vim-fugitive", cmd = {"Git"} },
-        { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = { scope = {enabled = false} }, event = "BufReadPost" },
         {
             'rmagatti/auto-session',
             lazy = false,
