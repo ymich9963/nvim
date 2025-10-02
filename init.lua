@@ -50,6 +50,18 @@ augroup END]])
 
 vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 vim.cmd('colorscheme nanos') -- Colourscheme
+
+vim.api.nvim_create_user_command('DeleteInactiveBuffers',
+    function()
+        for _, buf in ipairs(vim.fn.getbufinfo()) do
+            if next(buf.windows) == nil and buf.listed == 1 and buf.changed == 0 then
+                vim.cmd('bd! ' .. buf.bufnr)
+            end
+        end
+        vim.print('Deleted inactive buffers.')
+    end,
+    { desc = "Delete listed unmodified buffers that are not in a window" })
+
 --END-SETTINGS---
 
 --REMAPS--
