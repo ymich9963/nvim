@@ -63,7 +63,7 @@ vim.api.nvim_create_user_command('DeleteInactiveBuffers',
             end
         end
         if notify then
-            vim.notify('Deleted' .. tostring(number) .. 'inactive buffer(s).', vim.log.levels.INFO)
+            vim.notify('Deleted ' .. tostring(number) .. ' inactive buffer(s).', vim.log.levels.INFO)
         else
             vim.notify('No inactive buffers were deleted.', vim.log.levels.INFO)
         end
