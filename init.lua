@@ -40,35 +40,8 @@ vim.opt.shellquote = ''
 vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
 -- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
 
--- Make the matches for the Special Comments at every window
-vim.cmd([[augroup SpecialComments
-autocmd WinEnter * call matchadd("TODO", 'TODO:')
-autocmd WinEnter * call matchadd("INFO", 'INFO:')
-autocmd WinEnter * call matchadd("FIX", 'FIX:')
-autocmd WinEnter * call matchadd("BUG", 'BUG:')
-augroup END]])
-
 vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 vim.cmd('colorscheme nanos') -- Colourscheme
-
-vim.api.nvim_create_user_command('DeleteInactiveBuffers',
-    function()
-        local notify = false
-        local number = 0
-        for _, buf in ipairs(vim.fn.getbufinfo()) do
-            if vim.tbl_isempty(buf.windows) and buf.listed == 1 and buf.changed == 0 then
-                notify = true
-                number = number + 1
-                vim.cmd.bdelete({ buf.bufnr, bang = true })
-            end
-        end
-        if notify then
-            vim.notify('Deleted ' .. tostring(number) .. ' inactive buffer(s).', vim.log.levels.INFO)
-        else
-            vim.notify('No inactive buffers were deleted.', vim.log.levels.INFO)
-        end
-    end,
-    { desc = 'Delete listed unmodified buffers that are not in a window' })
 
 --END-SETTINGS---
 
@@ -176,7 +149,7 @@ require("lazy").setup({
             build = ":TSUpdate",
             config = function ()
                 require("nvim-treesitter.configs").setup({
-                    ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "markdown", "markdown-inline", "python", "xml", "powershell" },
+                    ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "markdown", "python", "xml", "powershell" },
                     sync_install = false,
                     highlight = { enable = true },
                     indent = { enable = true },
@@ -283,3 +256,39 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 })
 --END-LSP--
+
+--AUTOCOMMANDS--
+
+-- Make the matches for the Special Comments at every window
+vim.api.nvim_create_autocmd({"WinEnter"}, {
+    pattern = { "*" },
+    group = vim.api.nvim_create_augroup("SpecialComments", { clear = true }),
+    callback = function()
+        vim.fn.matchadd("TODO", 'TODO:')
+        vim.fn.matchadd("INFO", 'INFO:')
+        vim.fn.matchadd("FIX", 'FIX:')
+        vim.fn.matchadd("BUG", 'BUG:')
+    end
+})
+--END-AUTOCOMMANDS--
+
+--COMMANDS--
+vim.api.nvim_create_user_command('DeleteInactiveBuffers',
+    function()
+        local notify = false
+        local number = 0
+        for _, buf in ipairs(vim.fn.getbufinfo()) do
+            if vim.tbl_isempty(buf.windows) and buf.listed == 1 and buf.changed == 0 then
+                notify = true
+                number = number + 1
+                vim.cmd.bdelete({ buf.bufnr, bang = true })
+            end
+        end
+        if notify then
+            vim.notify('Deleted ' .. tostring(number) .. ' inactive buffer(s).', vim.log.levels.INFO)
+        else
+            vim.notify('No inactive buffers were deleted.', vim.log.levels.INFO)
+        end
+    end,
+    { desc = 'Delete listed unmodified buffers that are not in a window' })
+--END-COMMANDS--
