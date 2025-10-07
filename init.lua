@@ -31,18 +31,20 @@ vim.opt.foldcolumn = '0'
 vim.opt.foldtext = " "
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
-vim.opt.shell = vim.fn.executable('pwsh') == 1 and 'pwsh -NoLogo' or 'powershell -NoLogo' -- Setttings to use Powershell, taken from toggleterm.nvim
+
+-- Setttings to use Powershell, taken from toggleterm.nvim
+vim.opt.shell = vim.fn.executable('pwsh') == 1 and 'pwsh -NoLogo' or 'powershell -NoLogo'
 vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
 vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
 vim.opt.shellxquote = ''
 vim.opt.shellquote = ''
+
 -- Fixes ANSI escape codes when using PS and :!, taken from https://github.com/ConnorSweeneyDev/.config/issues/2#issuecomment-2209443983
 vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
 -- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
 
 vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 vim.cmd('colorscheme nanos') -- Colourscheme
-
 --END-SETTINGS---
 
 --REMAPS--
@@ -258,8 +260,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --END-LSP--
 
 --AUTOCOMMANDS--
-
--- Make the matches for the Special Comments at every window
 vim.api.nvim_create_autocmd({"WinEnter"}, {
     pattern = { "*" },
     group = vim.api.nvim_create_augroup("SpecialComments", { clear = true }),
@@ -268,7 +268,8 @@ vim.api.nvim_create_autocmd({"WinEnter"}, {
         vim.fn.matchadd("INFO", 'INFO:')
         vim.fn.matchadd("FIX", 'FIX:')
         vim.fn.matchadd("BUG", 'BUG:')
-    end
+    end,
+    desc = "Make the matches for the Special Comments at every window"
 })
 --END-AUTOCOMMANDS--
 
