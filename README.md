@@ -14,7 +14,7 @@ Using,
 - [brianhuster/live-preview.nvim](https://github.com/brianhuster/live-preview.nvim): Live rendering of markdown files in browser. 
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter.git): Syntax Highlighting.
 - [nvim-treesitter/nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context.git): Current code context.
-- [mbbill/undotree](https://github.com/mbbill/undotree.git): Improved Undo.
+- [jiaoshijie/undotree](https://github.com/jiaoshijie/undotree.git): Undo Tree.
 - [rmagatti/auto-session](https://github.com/rmagatti/auto-session.git): Session manager.
 - [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive.git): Git integration for Vim.
 
