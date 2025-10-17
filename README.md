@@ -28,7 +28,6 @@ Using,
 ```
 git clone https://github.com/ymich9963/nvim $HOME\AppData\Local\nvim
 ``` 
-
 ### Linux
 ```
 git clone https://github.com/ymich9963/nvim ~/.config/nvim
