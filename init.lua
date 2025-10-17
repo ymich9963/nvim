@@ -43,7 +43,6 @@ vim.opt.shellquote = ''
 vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
 -- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
 
-vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 vim.cmd('colorscheme nanos') -- Colourscheme
 --END-SETTINGS---
 
@@ -135,6 +134,12 @@ require("lazy").setup({
             cmd = { "Neogen" },
         },
         {
+            "nvim-treesitter/nvim-treesitter",
+            branch = "master",
+            lazy = false,
+            build = ":TSUpdate",
+        },
+        {
             "nvim-treesitter/nvim-treesitter-context",
             dependencies = {
                 "nvim-treesitter/nvim-treesitter",
@@ -144,23 +149,17 @@ require("lazy").setup({
                 max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
             }
         },
-        {
-            "nvim-treesitter/nvim-treesitter",
-            branch = "master",
-            lazy = false,
-            build = ":TSUpdate",
-            config = function ()
-                require("nvim-treesitter.configs").setup({
-                    ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "markdown", "python", "xml", "powershell" },
-                    sync_install = false,
-                    highlight = { enable = true },
-                    indent = { enable = true },
-                })
-            end
-        },
     }
 })
 
+vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
+
+require("nvim-treesitter.configs").setup({
+    ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "markdown", "python", "xml", "powershell" },
+    sync_install = false,
+    highlight = { enable = true },
+    indent = { enable = true },
+})
 --END-PLUGINS--
 
 --LSP--
