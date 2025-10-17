@@ -65,6 +65,14 @@ vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height
 vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+
+-- Simulate the map gf :e <cfile>.md<CR> so that it works with spaces
+-- Must also remove [[ ]] to make Wikilinks work on WIndows
+vim.keymap.set('n', 'gf', function()
+    local word = vim.fn.expand('<cword>')
+    word = word:gsub("^%[%[", ""):gsub("%]%]$", "")
+    vim.cmd('edit ' .. word .. '.md')
+end, { desc = "Open markdown file from Wikilink" })
 --END-REMAPS--
 
 --PLUGINS--
@@ -184,11 +192,11 @@ vim.lsp.enable("vimls")
 vim.lsp.config("pyright", {})
 vim.lsp.enable("pyright")
 
--- vim.lsp.config("markdown_oxide", {})
--- vim.lsp.enable({"markdown_oxide"})
+vim.lsp.config("markdown_oxide", {})
+vim.lsp.enable("markdown_oxide")
 
-vim.lsp.config("marksman", {})
-vim.lsp.enable("marksman")
+-- vim.lsp.config("marksman", {})
+-- vim.lsp.enable("marksman")
 -- LSP diagnostics config
 vim.diagnostic.config({
     virtual_text = false,
@@ -206,51 +214,51 @@ vim.api.nvim_create_autocmd("LspAttach", {
             local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
             client.server_capabilities.completionProvider.triggerCharacters = chars
             vim.lsp.completion.enable( true, client.id, ev.buf,
-                {
-                    autotrigger = true,
-                    convert = function(item)
-                        local abbr = item.label
-                        abbr = #abbr > 30 and abbr:sub(1, 29) .. "…" or abbr
+            {
+                autotrigger = true,
+                convert = function(item)
+                    local abbr = item.label
+                    abbr = #abbr > 30 and abbr:sub(1, 29) .. "…" or abbr
 
-                        local menu = item.detail or ""
-                        menu = #menu > 30 and menu:sub(1, 29) .. "…" or menu
+                    local menu = item.detail or ""
+                    menu = #menu > 30 and menu:sub(1, 29) .. "…" or menu
 
-                        return { abbr = abbr, menu = menu }
-                    end
-                }
-            )
-        end
-
-        -- Documentation formatting when using auto-completion
-        if client:supports_method("completionItem/resolve") then
-            local _, cancel_prev = nil, function() end
-            vim.api.nvim_create_autocmd("CompleteChanged", { buffer = ev.buf,
-                callback = function(event)
-                    cancel_prev()
-
-                    local info = vim.fn.complete_info({ "selected" })
-                    local completionItem =
-                    vim.tbl_get(vim.v.completed_item, "user_data", "nvim", "lsp", "completion_item")
-                    if not completionItem then
-                        return
-                    end
-
-                    _, cancel_prev = vim.lsp.buf_request( event.buf, vim.lsp.protocol.Methods.completionItem_resolve, completionItem,
-                        function(err, item, ctx)
-                            if not item then
-                                return
-                            end
-
-                            local docs = (item.documentation or {}).value
-                            local win = vim.api.nvim__complete_set(info["selected"], { info = docs })
-                            if win.winid and vim.api.nvim_win_is_valid(win.winid) then
-                                vim.treesitter.start(win.bufnr, "markdown")
-                                vim.wo[win.winid].conceallevel = 3
-                            end
-                        end
-                    )
+                    return { abbr = abbr, menu = menu }
                 end
-            })
+            }
+        )
+    end
+
+    -- Documentation formatting when using auto-completion
+    if client:supports_method("completionItem/resolve") then
+        local _, cancel_prev = nil, function() end
+        vim.api.nvim_create_autocmd("CompleteChanged", { buffer = ev.buf,
+        callback = function(event)
+            cancel_prev()
+
+            local info = vim.fn.complete_info({ "selected" })
+            local completionItem =
+            vim.tbl_get(vim.v.completed_item, "user_data", "nvim", "lsp", "completion_item")
+            if not completionItem then
+                return
+            end
+
+            _, cancel_prev = vim.lsp.buf_request( event.buf, vim.lsp.protocol.Methods.completionItem_resolve, completionItem,
+            function(err, item, ctx)
+                if not item then
+                    return
+                end
+
+                local docs = (item.documentation or {}).value
+                local win = vim.api.nvim__complete_set(info["selected"], { info = docs })
+                if win.winid and vim.api.nvim_win_is_valid(win.winid) then
+                    vim.treesitter.start(win.bufnr, "markdown")
+                    vim.wo[win.winid].conceallevel = 3
+                end
+            end
+        )
+    end
+})
         end
     end
 })
@@ -272,21 +280,21 @@ vim.api.nvim_create_autocmd({"WinEnter"}, {
 
 --COMMANDS--
 vim.api.nvim_create_user_command('DeleteInactiveBuffers',
-    function()
-        local notify = false
-        local number = 0
-        for _, buf in ipairs(vim.fn.getbufinfo()) do
-            if vim.tbl_isempty(buf.windows) and buf.listed == 1 and buf.changed == 0 then
-                notify = true
-                number = number + 1
-                vim.cmd.bdelete({ buf.bufnr, bang = true })
-            end
+function()
+    local notify = false
+    local number = 0
+    for _, buf in ipairs(vim.fn.getbufinfo()) do
+        if vim.tbl_isempty(buf.windows) and buf.listed == 1 and buf.changed == 0 then
+            notify = true
+            number = number + 1
+            vim.cmd.bdelete({ buf.bufnr, bang = true })
         end
-        if notify then
-            vim.notify('Deleted ' .. tostring(number) .. ' inactive buffer(s).', vim.log.levels.INFO)
-        else
-            vim.notify('No inactive buffers were deleted.', vim.log.levels.INFO)
-        end
-    end,
-    { desc = 'Delete listed unmodified buffers that are not in a window' })
+    end
+    if notify then
+        vim.notify('Deleted ' .. tostring(number) .. ' inactive buffer(s).', vim.log.levels.INFO)
+    else
+        vim.notify('No inactive buffers were deleted.', vim.log.levels.INFO)
+    end
+end,
+{ desc = 'Delete listed unmodified buffers that are not in a window' })
 --END-COMMANDS--
