@@ -154,7 +154,7 @@ require("lazy").setup({
 
 vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 
-require("nvim-treesitter").install({ "c", "cpp", "lua", "vim", "vimdoc", "markdown", "python", "xml", "powershell" })-- })
+require("nvim-treesitter").install({ "c", "cpp", "lua", "vim", "vimdoc", "markdown", "markdown-inline", "python", "xml", "powershell" })
 --END-PLUGINS--
 
 --LSP--
