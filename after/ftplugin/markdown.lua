@@ -1,3 +1,1 @@
-vim.cmd([[
-    setlocal wrap
-]])
+vim.wo.wrap = true
