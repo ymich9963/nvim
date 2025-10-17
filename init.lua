@@ -135,7 +135,7 @@ require("lazy").setup({
         },
         {
             "nvim-treesitter/nvim-treesitter",
-            branch = "master",
+            branch = "main",
             lazy = false,
             build = ":TSUpdate",
         },
@@ -154,12 +154,7 @@ require("lazy").setup({
 
 vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 
-require("nvim-treesitter.configs").setup({
-    ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "markdown", "python", "xml", "powershell" },
-    sync_install = false,
-    highlight = { enable = true },
-    indent = { enable = true },
-})
+require("nvim-treesitter").install({ "c", "cpp", "lua", "vim", "vimdoc", "markdown", "python", "xml", "powershell" })-- })
 --END-PLUGINS--
 
 --LSP--
