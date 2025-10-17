@@ -25,12 +25,12 @@ Using,
 
 ## Setup
 ### Windows
-```bash
+```
 git clone https://github.com/ymich9963/nvim $HOME\AppData\Local\nvim
 ``` 
 
 ### Linux
-```bash
+```
 git clone https://github.com/ymich9963/nvim ~/.config/nvim
 ``` 
 Then run `:Lazy sync` to make sure everything is working
