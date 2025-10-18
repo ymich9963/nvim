@@ -192,8 +192,6 @@ vim.lsp.enable("pyright")
 vim.lsp.config("markdown_oxide", {})
 vim.lsp.enable("markdown_oxide")
 
--- vim.lsp.config("marksman", {})
--- vim.lsp.enable("marksman")
 -- LSP diagnostics config
 vim.diagnostic.config({
     virtual_text = false,
