@@ -263,13 +263,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 --AUTOCOMMANDS--
 
--- Enable treesitter per FileType (for all in this case) style
+-- Enable treesitter per FileType 
+local ignore_file_types = {
+  netrw = true,
+  lazy = true,
+  lazy_backdrop = true,
+  mason = true,
+  mason_backdrop = true,
+}
+
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { '<filetype>' },
+    pattern = {'*'},
     callback = function()
-        vim.treesitter.start()
+        if not ignore_file_types[vim.bo.filetype] then
+            vim.treesitter.start()
+            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        end
     end,
-    desc = "Enable treesitter for every FileType"
+    desc = "Enable treesitter for every FileType except the ignored file types"
 })
 
 -- For Special highlights provided by nanos
