@@ -13,5 +13,7 @@ vim.keymap.set('n', 'gf', function()
         end
     end
     local file = string.match(line,"%[%[(.-)%]%]",index)
-    vim.cmd('edit ' .. file .. '.md')
+    if file then
+        vim.cmd('edit ' .. file .. '.md')
+    end
 end, { desc = "Open markdown file from Wikilink" })

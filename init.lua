@@ -113,6 +113,10 @@ require("lazy").setup({
             },
         },
         {
+            'OXY2DEV/markview.nvim',
+            lazy = false,
+        },
+        {
             'brianhuster/live-preview.nvim',
             opts = {
                 port = 55555,
@@ -261,18 +265,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Enable treesitter per FileType (for all in this case) style
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = {'*'},
+    pattern = { '<filetype>' },
     callback = function()
-        if vim.bo.filetype ~= 'netrw' then
-            -- syntax highlighting, provided by Neovim
-            vim.treesitter.start()
-            -- folds, provided by Neovim
-            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-            -- indentation, provided by nvim-treesitter
-            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-        end
+        vim.treesitter.start()
     end,
-    desc = "Enable treesitter for every FileType except Netrw"
+    desc = "Enable treesitter for every FileType"
 })
 
 -- For Special highlights provided by nanos
