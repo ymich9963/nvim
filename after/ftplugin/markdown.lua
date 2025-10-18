@@ -1,7 +1,7 @@
 vim.wo.wrap = true
 
 -- Simulate the map gf :e <cfile>.md<CR> so that it works with spaces
--- Must also remove [[ ]] to make Wikilinks work on WIndows
+-- Must also remove [[ ]] to make Wikilinks work on Windows
 vim.keymap.set('n', 'gf', function()
     local index = 0
     local line = vim.api.nvim_get_current_line()
@@ -16,4 +16,8 @@ vim.keymap.set('n', 'gf', function()
     if file then
         vim.cmd('edit ' .. file .. '.md')
     end
-end, { desc = "Open markdown file from Wikilink" })
+end,
+{
+    desc = "Open markdown file from Wikilink",
+    buffer = true,
+})
