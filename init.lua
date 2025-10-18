@@ -66,13 +66,6 @@ vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window heig
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
--- Simulate the map gf :e <cfile>.md<CR> so that it works with spaces
--- Must also remove [[ ]] to make Wikilinks work on WIndows
-vim.keymap.set('n', 'gf', function()
-    local word = vim.fn.expand('<cword>')
-    word = word:gsub("^%[%[", ""):gsub("%]%]$", "")
-    vim.cmd('edit ' .. word .. '.md')
-end, { desc = "Open markdown file from Wikilink" })
 --END-REMAPS--
 
 --PLUGINS--
@@ -265,6 +258,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --END-LSP--
 
 --AUTOCOMMANDS--
+
+-- Enable treesitter per FileType (for all in this case) style
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = {'*'},
+    callback = function()
+        if vim.bo.filetype ~= 'netrw' then
+            -- syntax highlighting, provided by Neovim
+            vim.treesitter.start()
+            -- folds, provided by Neovim
+            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            -- indentation, provided by nvim-treesitter
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+    end,
+    desc = "Enable treesitter for every FileType except Netrw"
+})
+
+-- For Special highlights provided by nanos
 vim.api.nvim_create_autocmd({"WinEnter"}, {
     pattern = { "*" },
     group = vim.api.nvim_create_augroup("SpecialComments", { clear = true }),

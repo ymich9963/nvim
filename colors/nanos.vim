@@ -11,7 +11,7 @@ hi! Normal guifg=#eeeeee guibg=#14161b  " Background
 hi! Function guifg=#2d52d6 
 hi! Type guifg=#65bcff
 hi! Special guifg=#65bcff
-hi! Statement guifg=#9d33ff
+hi! Statement gui=NONE guifg=#9d33ff
 hi! Constant guifg=#ff966c
 hi! Comment guifg=#999999
 hi! Keywords guifg=#9d33ff
