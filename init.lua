@@ -264,6 +264,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Enable treesitter per FileType 
 local ignore_file_types = {
   netrw = true,
+  qf = true,
   lazy = true,
   lazy_backdrop = true,
   mason = true,
