@@ -260,29 +260,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --END-LSP--
 
 --AUTOCOMMANDS--
-
--- Enable treesitter per FileType 
-local ignore_file_types = {
-    netrw = true,
-    qf = true,
-    lazy = true,
-    lazy_backdrop = true,
-    mason = true,
-    mason_backdrop = true,
-}
-
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = {'*'},
-    callback = function()
-        if not ignore_file_types[vim.bo.filetype] then
-            vim.treesitter.start()
-            vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    callback = function(args)
+        local treesitter = require('nvim-treesitter')
+        local lang = vim.treesitter.language.get_lang(args.match)
+        if vim.list_contains(treesitter.get_available(), lang) then
+            if not vim.list_contains(treesitter.get_installed(), lang) then
+                treesitter.install(lang)
+            vim.treesitter.start(args.buf)
+            end
         end
     end,
-    desc = "Enable treesitter for every FileType except the ignored file types"
+    desc = "Enable nvim-treesitter and install parser if not installed"
 })
 
--- For Special highlights provided by nanos
 vim.api.nvim_create_autocmd({"WinEnter"}, {
     pattern = { "*" },
     group = vim.api.nvim_create_augroup("SpecialComments", { clear = true }),
@@ -292,7 +283,7 @@ vim.api.nvim_create_autocmd({"WinEnter"}, {
         vim.fn.matchadd("FIX", 'FIX:')
         vim.fn.matchadd("BUG", 'BUG:')
     end,
-    desc = "Make the matches for the Special Comments at every window"
+    desc = "Make the matches for the nanos colorscheme Special Comments at every window"
 })
 --END-AUTOCOMMANDS--
 

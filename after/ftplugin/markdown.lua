@@ -1,23 +1,43 @@
-vim.wo.wrap = true
+vim.wo.wrap = true -- Enable wrap for current .md window
+vim.diagnostic.enable(false, { bufnr = 0 }) -- Disable diagnostics for current .md buffer
 
 -- Simulate the map gf :e <cfile>.md<CR> so that it works with spaces
 -- Must also remove [[ ]] to make Wikilinks work on Windows
 vim.keymap.set('n', 'gf', function()
-    local index = 0
+    local cursor_pos = 0
     local line = vim.api.nvim_get_current_line()
     local current_col = vim.fn.col('.')
+    -- Get the current cursor position that is closest to the [[link]]
+    -- This is to prevent issues with multiple links in one line
     for i = 0, #line do
-        local cc = line:sub(i,i + 1)
+        local cc = line:sub(i, i + 1)
         if cc == "[[" and i < current_col then
-            index = i - 1
+            cursor_pos = i - 1
         end
     end
-    local file = string.match(line,"%[%[(.-)%]%]",index)
+    local file = string.match(line, "%[%[(.-)%]%]", cursor_pos)
     if file then
         vim.cmd('edit ' .. file .. '.md')
     end
 end,
 {
     desc = "Open markdown file from Wikilink",
+    buffer = true,
+})
+
+local selected_text = function()
+    local mode = vim.api.nvim_get_mode().mode
+    -- \22 is an escaped version of <c-v>
+    if mode == "v" or mode == "V" or mode == "\22" then
+        local text = vim.fn.getregion(vim.fn.getpos "v", vim.fn.getpos ".")
+        vim.print(text)
+    end
+end
+
+vim.keymap.set('v', '<C-K>', function()
+    selected_text()
+end,
+{
+    desc = "Select text under cursor",
     buffer = true,
 })
