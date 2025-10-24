@@ -6,7 +6,7 @@ local open_md_file_wikilink = function()
     local line = vim.api.nvim_get_current_line()
     local current_col = vim.fn.col('.')
 
-    for start_pos, file ,end_pos in line:gmatch("()(%[%[(.-)%]%])()") do
+    for start_pos, file ,end_pos in line:gmatch("()%[%[(.-)%]%]()") do
         if start_pos < current_col and end_pos > current_col then
             vim.cmd('edit ' .. file .. '.md')
         end
@@ -17,7 +17,7 @@ local check_md_link = function()
     local line = vim.api.nvim_get_current_line()
     local current_col = vim.fn.col('.')
 
-    for start_pos, links, end_pos in line:gmatch("()(%[[^%]]+%]%([^%)]+%)())") do
+    for start_pos, _, end_pos in line:gmatch("()(%[[^%]]+%]%([^%)]+%)())") do
         if start_pos < current_col and end_pos > current_col then
             return true
         end
