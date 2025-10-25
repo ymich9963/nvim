@@ -162,7 +162,7 @@ vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 
 --LSP--
 vim.lsp.config("clangd", {
-    cmd = {vim.fn.stdpath("data") .. "\\mason\\bin\\clangd.CMD", "--header-insertion=never"}
+    cmd = {vim.fn.stdpath("data") .. "\\mason\\bin\\clangd.cmd", "--header-insertion=never"}
 })
 vim.lsp.enable("clangd")
 
@@ -180,8 +180,8 @@ vim.lsp.config("lua_ls", {
 })
 vim.lsp.enable("lua_ls")
 
-vim.lsp.config("powershell-editor-services", {})
-vim.lsp.enable("powershell-editor-services")
+vim.lsp.config("powershell_es", {})
+vim.lsp.enable("powershell_es")
 
 vim.lsp.config("vimls", {})
 vim.lsp.enable("vimls")
