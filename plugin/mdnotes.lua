@@ -1,7 +1,9 @@
 -- TODO: Make this configurable
-local home_file = "MAIN.md"
+local index_file = "MAIN.md"
+local assets_path = "assets" -- can be absolute or relative 
+
 local go_to_home_file = function()
-    vim.cmd('edit ' .. home_file)
+    vim.cmd('edit ' .. index_file)
 end
 
 -- Simulate the map gf :e <cfile>.md<CR> so that it works with spaces
@@ -86,6 +88,7 @@ local show_backlinks_lsp = function()
 end
 
 -- TODO: Make it so that indenting on block indents everything below
+-- OR mention the << and >> keymaps that you can do
 local outliner_enable = function()
     vim.api.nvim_input("<ESC>0i- ")
     vim.keymap.set('i', '<CR>', '<CR>- ', { buffer = true })
@@ -101,6 +104,10 @@ local outliner_disable = function()
     vim.notify("Exited MDNotes Outliner Mode", vim.log.levels.INFO)
 end
 
+local insert_image = function()
+    print("dev")
+end
+
 local subcommands = {
     home = go_to_home_file,
     open_wikilink = open_md_file_wikilink,
@@ -111,6 +118,7 @@ local subcommands = {
     show_backlinks_lsp = show_backlinks_lsp,
     outliner_enable = outliner_enable,
     outliner_disable = outliner_disable,
+    insert_image = insert_image,
 }
 
 vim.api.nvim_create_user_command( "Mdn", function(opts)
