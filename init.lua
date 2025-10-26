@@ -260,21 +260,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --END-LSP--
 
 --AUTOCOMMANDS--
-vim.api.nvim_create_autocmd('FileType', {
+vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
         local treesitter = require('nvim-treesitter')
         local lang = vim.treesitter.language.get_lang(args.match)
         if vim.list_contains(treesitter.get_available(), lang) then
             if not vim.list_contains(treesitter.get_installed(), lang) then
                 treesitter.install(lang)
-            vim.treesitter.start(args.buf)
             end
+            vim.treesitter.start(args.buf)
         end
     end,
     desc = "Enable nvim-treesitter and install parser if not installed"
 })
 
-vim.api.nvim_create_autocmd({"WinEnter"}, {
+vim.api.nvim_create_autocmd("WinEnter", {
     pattern = { "*" },
     group = vim.api.nvim_create_augroup("SpecialComments", { clear = true }),
     callback = function()

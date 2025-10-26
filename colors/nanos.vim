@@ -66,26 +66,25 @@ hi! BUG guibg=NvimLightRed guifg=Black
 hi! @operator guifg=#89ddff 
 hi! @punctuation guifg=#535561 " Brackets
 hi! @punctuation.special guifg=#773c3c " Exclamation marks
+hi! @variable guifg=#c8d3f5
+hi! @variable.member guifg=#4fd633
+hi! @variable.parameter guifg=#ffc777
+hi! @property guifg=#4fd633
 
 " LSP
-hi! @lsp.type.variable guifg=#c8d3f5
-hi! @lsp.type.parameter guifg=#ffc777
-hi! @lsp.type.property guifg=#4fd633
 hi! @lsp.typemod.function.defaultLibrary guifg=#65bcff
+hi! @lsp.type.parameter guifg=#ffc777
 
 " Vimscript
 hi! @keyword.vim cterm=italic gui=italic guifg=#fca7ea 
 hi! @property.vim guifg=#4fd633 
-hi! link @variable.vim @lsp.type.variable
-hi! @markup.heading guifg=Grey
 
 " C/Cpp
 hi! @keyword.type.cpp guifg=lightblue
+hi! link cParen @punctuation
+hi! link cBlock @punctuation
 
 " Python
-hi! link @variable.python @lsp.type.variable
-hi! @variable.member.python guifg=#4fd633
-hi! @variable.parameter.python guifg=#ffc777
 hi! @variable.builtin.python gui=italic guifg=#fca7ea
 
 " Markdown
