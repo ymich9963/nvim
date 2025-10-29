@@ -235,8 +235,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 cancel_prev()
 
                 local info = vim.fn.complete_info({ "selected" })
-                local completionItem =
-                vim.tbl_get(vim.v.completed_item, "user_data", "nvim", "lsp", "completion_item")
+                local completionItem = vim.tbl_get(vim.v.completed_item, "user_data", "nvim", "lsp", "completion_item")
                 if not completionItem then
                     return
                 end
@@ -267,7 +266,7 @@ vim.api.nvim_create_autocmd("FileType", {
         local lang = vim.treesitter.language.get_lang(args.match)
         if vim.list_contains(treesitter.get_available(), lang) then
             if not vim.list_contains(treesitter.get_installed(), lang) then
-                treesitter.install(lang)
+                treesitter.install(lang):wait()
             end
             vim.treesitter.start(args.buf)
         end
