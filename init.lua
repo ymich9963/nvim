@@ -154,7 +154,12 @@ require("lazy").setup({
                 max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
             }
         },
-        { dir = vim.fn.stdpath("data") .. "/lazy/mdnotes.nvim"}
+        {
+            dir = vim.fn.stdpath("data") .. "/../mdnotes.nvim",
+            opts = {
+                assets_path = "./assets"
+            }
+        },
     }
 })
 
@@ -163,7 +168,7 @@ vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 
 --LSP--
 vim.lsp.config("clangd", {
-    cmd = {vim.fn.stdpath("data") .. "\\mason\\bin\\clangd.cmd", "--header-insertion=never"}
+    cmd = {vim.fn.stdpath("data") .. "/mason/bin/clangd.cmd", "--header-insertion=never"}
 })
 vim.lsp.enable("clangd")
 
@@ -306,4 +311,10 @@ function()
     end
 end,
 { desc = 'Delete listed unmodified buffers that are not in a window' })
+
+vim.api.nvim_create_user_command('InsertDate',
+function()
+    vim.cmd([[put =strftime('%a %d %b %Y')]])
+end,
+{ desc = 'Insert date' })
 --END-COMMANDS--
