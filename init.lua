@@ -155,9 +155,11 @@ require("lazy").setup({
             }
         },
         {
-            dir = vim.fn.stdpath("data") .. "/../mdnotes.nvim",
+            "ymich9963/mdnotes.nvim",
             opts = {
-                assets_path = "./assets"
+                assets_path = "./assets",
+                index_file = "./MAIN.md",
+                journal_file = "./JOURNAL.md",
             }
         },
     }
