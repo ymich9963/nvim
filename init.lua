@@ -155,11 +155,9 @@ require("lazy").setup({
             }
         },
         {
-            "ymich9963/mdnotes.nvim",
+            dir = vim.fn.stdpath("data") .. "/../mdnotes.nvim",
             opts = {
-                assets_path = "./assets",
-                index_file = "./MAIN.md",
-                journal_file = "./JOURNAL.md",
+                assets_path = "./assets"
             }
         },
     }
@@ -180,7 +178,8 @@ vim.lsp.config("lua_ls", {
             workspace = {
                 checkThirdParty = false,
                 library = {
-                    vim.env.VIMRUNTIME
+                    vim.env.VIMRUNTIME,
+                    '${3rd}/luv/library'
                 }
             },
         },
