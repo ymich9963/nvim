@@ -312,10 +312,4 @@ function()
     end
 end,
 { desc = 'Delete listed unmodified buffers that are not in a window' })
-
-vim.api.nvim_create_user_command('InsertDate',
-function()
-    vim.cmd([[put =strftime('%a %d %b %Y')]])
-end,
-{ desc = 'Insert date' })
 --END-COMMANDS--
