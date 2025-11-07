@@ -89,6 +89,9 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
+    dev = {
+        path = "~/AppData/Local/"
+    },
     spec = {
         { "mason-org/mason.nvim", opts = {} },
         { "neovim/nvim-lspconfig" },
@@ -155,10 +158,11 @@ require("lazy").setup({
             }
         },
         {
-            dir = vim.fn.stdpath("data") .. "/../mdnotes.nvim",
+            "ymich9963/mdnotes.nvim",
             opts = {
                 assets_path = "./assets"
-            }
+            },
+            dev = true
         },
     }
 })
