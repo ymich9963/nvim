@@ -7,4 +7,5 @@ vim.keymap.set("n", "<Left>", ":Mdn go_back<CR>", { desc = "Go to back to previo
 vim.keymap.set("n", "<Right>", ":Mdn go_forward<CR>", { desc = "Go to next visited Markdown buffer" })
 vim.keymap.set({"v", "n"}, "<C-B>", ":Mdn bold_toggle<CR>", { desc = "Toggle bold formatting" })
 vim.keymap.set({"v", "n"}, "<C-I>", ":Mdn italic_toggle<CR>", { desc = "Toggle italic formatting" })
-vim.opt.isfname:remove('[', ']') -- To enable path completion on Windows <C-x> <C-f>
+vim.opt.isfname:remove('[') -- To enable path completion on Windows :h i_CTRL-X_CTRL-F
+vim.opt.isfname:remove(']')
