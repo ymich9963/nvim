@@ -96,7 +96,7 @@ require("lazy").setup({
         { "mason-org/mason.nvim", opts = {} },
         { "neovim/nvim-lspconfig" },
         { "jiaoshijie/undotree", keys = { {"<leader>ut", "<cmd>lua require('undotree').toggle()<cr>", "n", desc = "Toggle Undotree"}, }, },
-        { "NvChad/nvim-colorizer.lua", lazy = true, opts = {}, cmd= {"ColorizerToggle"} },
+        { "catgoose/nvim-colorizer.lua", lazy = true, opts = {}, cmd= {"ColorizerToggle"} },
         { "tpope/vim-fugitive", cmd = {"Git"} },
         {
             'rmagatti/auto-session',

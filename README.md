@@ -7,7 +7,7 @@
 Using,
 
 - [lazy.nvim](https://github.com/folke/lazy.nvim.git): Plugin Manager.
-- [NvChad/nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua): View colour codes. 
+- [catgoose/nvim-colorizer.lua](https://github.com/catgoose/nvim-colorizer.lua): View colour codes. 
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim): LSP Manager.
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): NeoVim LSP.
 - [danymat/neogen](https://github.com/danymat/neogen): Auto-generate doxygen data. 
