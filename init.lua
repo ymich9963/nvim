@@ -160,7 +160,8 @@ require("lazy").setup({
         {
             "ymich9963/mdnotes.nvim",
             opts = {
-                assets_path = "./assets"
+                assets_path = "assets",
+                default_keymaps = true,
             },
             dev = true
         },
