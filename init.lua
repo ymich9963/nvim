@@ -208,6 +208,7 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+-- From https://www.reddit.com/r/neovim/comments/1p0a576/comment/nphwtrg
 local installed_packages = require("mason-registry").get_installed_packages()
 local installed_lsp_names = vim.iter(installed_packages):fold({}, function(acc, pack)
 	table.insert(acc, pack.spec.neovim and pack.spec.neovim.lspconfig)
@@ -226,6 +227,7 @@ vim.diagnostic.config({
 })
 
 -- Builtin completion
+-- From https://www.reddit.com/r/neovim/comments/1mhusus/comment/n733xp9
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -283,6 +285,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --END-LSP--
 
 --AUTOCOMMANDS--
+-- From https://github.com/nvim-treesitter/nvim-treesitter/issues/8221#issuecomment-3436658280
 vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
         local treesitter = require('nvim-treesitter')
