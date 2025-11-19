@@ -311,8 +311,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
 --END-AUTOCOMMANDS--
 
 --COMMANDS--
-vim.api.nvim_create_user_command('DeleteInactiveBuffers',
-function()
+vim.api.nvim_create_user_command('DeleteInactiveBuffers', function()
     local notify = false
     local number = 0
     for _, buf in ipairs(vim.fn.getbufinfo()) do
@@ -329,4 +328,9 @@ function()
     end
 end,
 { desc = 'Delete listed unmodified buffers that are not in a window' })
+
+vim.api.nvim_create_user_command('InsertLastMessage', function()
+    vim.api.nvim_put({vim.fn.execute('messages'):match("([^\n\r\t]+)")}, "c", false, false)
+end,
+{ desc = 'Insert the last message from :messages' })
 --END-COMMANDS--
