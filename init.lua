@@ -171,10 +171,27 @@ vim.cmd('packadd nohlsearch') -- Automatically turn off search highlighting
 --END-PLUGINS--
 
 --LSP--
+-- Names must be Mason package names
+local ensure_installed = {
+    "clangd",
+    "lua-language-server",
+    "markdown-oxide",
+    "neocmakelsp",
+    "powershell-editor-services",
+    "pyright",
+    "rstcheck"
+}
+
+local installed_package_names = require('mason-registry').get_installed_package_names()
+for _, v in ipairs(ensure_installed) do
+    if not vim.tbl_contains(installed_package_names, v) then
+        vim.cmd(":MasonInstall " .. v)
+    end
+end
+
 vim.lsp.config("clangd", {
     cmd = {vim.fn.stdpath("data") .. "/mason/bin/clangd.cmd", "--header-insertion=never"}
 })
-vim.lsp.enable("clangd")
 
 vim.lsp.config("lua_ls", {
     settings = {
@@ -189,19 +206,14 @@ vim.lsp.config("lua_ls", {
         },
     },
 })
-vim.lsp.enable("lua_ls")
 
-vim.lsp.config("powershell_es", {})
-vim.lsp.enable("powershell_es")
+local installed_packages = require("mason-registry").get_installed_packages()
+local installed_lsp_names = vim.iter(installed_packages):fold({}, function(acc, pack)
+	table.insert(acc, pack.spec.neovim and pack.spec.neovim.lspconfig)
+	return acc
+end)
 
-vim.lsp.config("vimls", {})
-vim.lsp.enable("vimls")
-
-vim.lsp.config("pyright", {})
-vim.lsp.enable("pyright")
-
-vim.lsp.config("markdown_oxide", {})
-vim.lsp.enable("markdown_oxide")
+vim.lsp.enable(installed_lsp_names)
 
 -- LSP diagnostics config
 vim.diagnostic.config({
