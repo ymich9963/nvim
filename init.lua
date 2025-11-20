@@ -333,7 +333,8 @@ end,
 { desc = 'Delete listed unmodified buffers that are not in a window' })
 
 vim.api.nvim_create_user_command('InsertLastMessage', function()
-    vim.api.nvim_put({vim.fn.execute('messages'):match("([^\n\r\t]+)")}, "c", false, false)
+    local messages = vim.split(vim.fn.execute('messages'), "\n")
+    vim.api.nvim_put({messages[#messages]}, "c", false, false)
 end,
 { desc = 'Insert the last message from :messages' })
 --END-COMMANDS--
