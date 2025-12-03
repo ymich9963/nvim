@@ -32,22 +32,20 @@ vim.opt.foldtext = " "
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 
--- Setttings to use Powershell, taken from toggleterm.nvim
-vim.opt.shell = vim.fn.executable('pwsh') == 1 and 'pwsh -NoLogo' or 'powershell -NoLogo'
-vim.opt.shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait'
-vim.opt.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+-- Setttings to use Powershell, some taken from toggleterm.nvim
+-- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
+vim.opt.shell = vim.fn.executable('pwsh') == 1 and 'pwsh' or 'powershell'
+vim.opt.shellcmdflag = "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues['Out-File:Encoding']='utf8';$Env:NO_COLOR=1;"
+vim.opt.shellredir = '2>&1 | %{ "$_" } | Out-File -Encoding utf8 %s; exit $LastExitCode'
+vim.opt.shellpipe  = '2>&1 | %{ "$_" } | Tee-Object -Encoding utf8 %s; exit $LastExitCode'
 vim.opt.shellxquote = ''
 vim.opt.shellquote = ''
-
--- Fixes ANSI escape codes when using PS and :!, taken from https://github.com/ConnorSweeneyDev/.config/issues/2#issuecomment-2209443983
-vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.Formatting.Error = '';$PSStyle.Formatting.ErrorAccent = '';$PSStyle.Formatting.Warning = '';$PSStyle.OutputRendering = 'PlainText';"
--- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
 
 vim.cmd('colorscheme nanos') -- Colourscheme
 --END-SETTINGS---
 
 --REMAPS--
-vim.keymap.set("n", "<C-i>", "gg=G``", {desc = "Auto-indent and go back to position"})                                                      -- 
+vim.keymap.set("n", "<C-i>", "gg=G``", {desc = "Auto-indent and go back to position"})
 vim.keymap.set("n", "<leader>re", ":%s/<C-R><C-W>/", {desc = "Shortcut to replace current word under cursor"})
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", {desc = "Escape the terminal and go back to normal mode"})
 vim.keymap.set("n", "<leader>o", ":Explore .<CR>", {desc = "Netrw explore from cwd"})
