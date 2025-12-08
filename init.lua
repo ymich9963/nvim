@@ -32,21 +32,21 @@ vim.opt.foldtext = " "
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 
--- Setttings to use Powershell, some taken from toggleterm.nvim
 -- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
+-- important to test :make and :grep when setting these options, try maybe use :set makeprg=echo\ test for testing
 vim.opt.shell = 'powershell'
 vim.opt.shellcmdflag = "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
-vim.opt.shellredir = '2>&1 | %{ "$_" } | Out-File -Encoding utf8 %s; exit $LastExitCode'
-vim.opt.shellpipe  = '2>&1 | %{ "$_" } | tee.exe %s; exit $LastExitCode'
+vim.opt.shellpipe  = '> %s 2>&1'
 vim.opt.shellxquote = ''
 vim.opt.shellquote = ''
+vim.opt.shelltemp = false
 
 -- vim.opt.shell = 'pwsh'
--- vim.opt.shellcmdflag = "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
--- vim.opt.shellredir = '2>&1 | %{ "$_" } | Out-File -Encoding utf8 %s; exit $LastExitCode'
--- vim.opt.shellpipe  = '2>&1 | %{ "$_" } | Tee-Object -Encoding utf8 %s; exit $LastExitCode'
+-- vim.opt.shellcmdflag = "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.OutputRendering = 'PlainText';";
+-- vim.opt.shellpipe  = '> %s 2>&1'
 -- vim.opt.shellxquote = ''
 -- vim.opt.shellquote = ''
+-- vim.opt.shelltemp = false
 
 vim.cmd('colorscheme nanos') -- Colourscheme
 --END-SETTINGS---
