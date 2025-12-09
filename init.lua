@@ -34,19 +34,20 @@ vim.opt.foldlevel = 99
 
 -- Check this issue to see if pwsh can finally be used with :te and no :te pwsh, https://github.com/neovim/neovim/issues/31494
 -- important to test :make and :grep when setting these options, try maybe use :set makeprg=echo\ test for testing
-vim.opt.shell = 'powershell'
-vim.opt.shellcmdflag = "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
-vim.opt.shellpipe  = '> %s 2>&1'
-vim.opt.shellxquote = ''
-vim.opt.shellquote = ''
-vim.opt.shelltemp = false
-
--- vim.opt.shell = 'pwsh'
--- vim.opt.shellcmdflag = "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.OutputRendering = 'PlainText';";
+-- vim.opt.shell = 'powershell'
+-- vim.opt.shellcmdflag = "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
 -- vim.opt.shellpipe  = '> %s 2>&1'
 -- vim.opt.shellxquote = ''
 -- vim.opt.shellquote = ''
 -- vim.opt.shelltemp = false
+
+vim.opt.shell = 'pwsh'
+vim.opt.shellcmdflag = "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.OutputRendering = 'PlainText';";
+vim.opt.shellpipe  = '> %s 2>&1'
+vim.opt.shellxquote = ''
+vim.opt.shellquote = ''
+vim.opt.shelltemp = false
+vim.env.__SuppressAnsiEscapeSequences=1
 
 vim.cmd('colorscheme nanos') -- Colourscheme
 --END-SETTINGS---
@@ -59,14 +60,14 @@ vim.keymap.set("n", "<leader>o", ":Explore .<CR>", {desc = "Netrw explore from c
 vim.keymap.set("n", "<leader>O", ":Explore <CR>", {desc= "Netrw explore from file directory"})
 vim.keymap.set({"n", "v"}, "<leader>p", [["+p]], {desc = "Paste from system clipboard"})
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {desc = "Copy to system clipboard"})
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")                                                -- Move a selection up or down
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("n", "J", "mzJ`z")                                                           -- Append line and cursor remains in the same place
-vim.keymap.set("n", "n", "nzzzv")                                                           -- Keep cursor in the middle when searching
-vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })                      -- Better indenting in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {desc = "Move a selection down"})
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", {desc = "Move a selection up"})
+vim.keymap.set("n", "J", "mzJ`z", {desc = "Append line and cursor remains in the same place"})
+vim.keymap.set("n", "n", "nzzzv", {desc = "Keep cursor in the middle when searching"})
+vim.keymap.set("n", "N", "Nzzzv", {desc = "Keep cursor in the middle when searching"})
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
-vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })        -- Resizing
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
 vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
