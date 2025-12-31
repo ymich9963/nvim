@@ -207,6 +207,9 @@ vim.lsp.config("lua_ls", {
             },
         },
     },
+    on_attach = function ()
+        vim.api.nvim_set_hl(0, '@lsp.type.variable.lua', {})
+    end
 })
 
 -- From https://www.reddit.com/r/neovim/comments/1p0a576/comment/nphwtrg
