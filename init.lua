@@ -230,17 +230,25 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
--- Builtin completion
+--END-LSP--
+
+--AUTOCOMMANDS--
+local config_augroup = vim.api.nvim_create_augroup("Config", { clear = true })
+
+-- Builtin LSP autocompletion
 -- From https://www.reddit.com/r/neovim/comments/1mhusus/comment/n733xp9
 vim.api.nvim_create_autocmd("LspAttach", {
+    group = config_augroup,
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if not client then
-            return
-        end
+        if not client then return end
+
+        -- Autocompletion
         if client:supports_method("textDocument/completion") then
-            local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-            client.server_capabilities.completionProvider.triggerCharacters = chars
+            -- These three lines here are for auto-triggering on any keypress, I am unsure if I want this or not
+            -- local chars = {}
+            -- for i = 32, 126 do table.insert(chars, string.char(i)) end
+            -- client.server_capabilities.completionProvider.triggerCharacters = chars
             vim.lsp.completion.enable( true, client.id, ev.buf,
             {
                 autotrigger = true,
@@ -259,37 +267,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Documentation formatting when using auto-completion
         if client:supports_method("completionItem/resolve") then
             local _, cancel_prev = nil, function() end
-            vim.api.nvim_create_autocmd("CompleteChanged", { buffer = ev.buf,
-            callback = function(event)
-                cancel_prev()
-
-                local info = vim.fn.complete_info({ "selected" })
-                local completionItem = vim.tbl_get(vim.v.completed_item, "user_data", "nvim", "lsp", "completion_item")
-                if not completionItem then
-                    return
-                end
-
-                _, cancel_prev = vim.lsp.buf_request( event.buf, vim.lsp.protocol.Methods.completionItem_resolve, completionItem,
-                function(err, item, ctx)
-                    if not item then
-                        return
-                    end
-
-                    local docs = (item.documentation or {}).value
-                    local win = vim.api.nvim__complete_set(info["selected"], { info = docs })
-                    if win.winid and vim.api.nvim_win_is_valid(win.winid) then
-                        vim.treesitter.start(win.bufnr, "markdown")
-                        vim.wo[win.winid].conceallevel = 3
-                    end
-                end)
-            end})
+            vim.api.nvim_create_autocmd("CompleteChanged", {
+                group = config_augroup,
+                buffer = ev.buf,
+                callback = function(event)
+                    cancel_prev()
+                    local info = vim.fn.complete_info({ "selected" })
+                    local completionItem = vim.tbl_get(vim.v.completed_item, "user_data", "nvim", "lsp", "completion_item")
+                    if not completionItem then return end
+                    cancel_prev = vim.lsp.buf_request_all( event.buf, vim.lsp.protocol.Methods.completionItem_resolve, completionItem,
+                    function(results)
+                        if not results then return end
+                        for _, v in ipairs(results) do
+                            local item = v.result
+                            local docs = (item.documentation or {}).value
+                            local win = vim.api.nvim__complete_set(info["selected"], { info = docs })
+                            if win.winid and vim.api.nvim_win_is_valid(win.winid) then
+                                vim.treesitter.start(win.bufnr, item.documentation.kind)
+                                vim.wo[win.winid].conceallevel = 3
+                            end
+                        end
+                    end)
+                end,
+            })
         end
     end
 })
---END-LSP--
-
---AUTOCOMMANDS--
-local config_augroup = vim.api.nvim_create_augroup("Config", { clear = true })
 
 -- From https://github.com/nvim-treesitter/nvim-treesitter/issues/8221#issuecomment-3436658280
 vim.api.nvim_create_autocmd("FileType", {
