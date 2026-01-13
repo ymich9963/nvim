@@ -365,4 +365,15 @@ vim.api.nvim_create_user_command('InsertLastMessage', function()
     vim.api.nvim_put({messages[#messages]}, "c", false, false)
 end,
 { desc = 'Insert the last message from :messages' })
+
+-- From https://www.reddit.com/r/neovim/comments/1qb0qbf/i_replaced_whichkey_plugin_with_basic_lua_script/
+vim.api.nvim_create_user_command('ListCustomKeymaps', function()
+    local keymaps = vim.api.nvim_exec2("verbose map", { output = true }).output
+    local lines = vim.split(keymaps, "\n")
+    local buff = vim.api.nvim_create_buf(true, true)
+    vim.api.nvim_set_current_buf(buff)
+    vim.api.nvim_buf_set_lines(buff, 0, -1, false, lines)
+end,
+{ desc = 'List keymaps' })
+
 --END-COMMANDS--
