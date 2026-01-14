@@ -163,6 +163,11 @@ require("lazy").setup({
             },
             dev = true
         },
+        {
+            'nvim-mini/mini.test',
+            version = '*',
+            config = function() require('mini.test').setup() end
+        },
     }
 })
 
