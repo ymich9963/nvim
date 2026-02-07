@@ -88,7 +88,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
     dev = {
-        path = "~/AppData/Local/"
+        path = vim.fn.stdpath("config") .. "/../"
     },
     spec = {
         { "mason-org/mason.nvim", opts = {} },
@@ -162,6 +162,11 @@ require("lazy").setup({
                 default_keymaps = true,
             },
             dev = true
+        },
+        {
+            'nvim-mini/mini.test',
+            version = '*',
+            config = function() require('mini.test').setup() end
         },
     }
 })
